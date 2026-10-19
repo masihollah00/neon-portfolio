@@ -1,1 +1,295 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080817">
+  <title>سایت شخصی من | Neon</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #080817;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 20%, #7928ca35, transparent 45%),
+        radial-gradient(ellipse at 85% 75%, #00e5ff25, transparent 45%);
+      z-index: -1;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      border-bottom: 1px solid #ffffff12;
+    }
+
+    .logo {
+      color: #00e5ff;
+      font-size: 23px;
+      font-weight: bold;
+      text-shadow: 0 0 15px #00e5ff80;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .badge {
+      color: #00e5ff;
+      border: 1px solid #00e5ff60;
+      background: #00e5ff0d;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 8vw, 68px);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: #00e5ff;
+      text-shadow: 0 0 25px #00e5ff80;
+    }
+
+    .desc {
+      color: #aaaabd;
+      font-size: 16px;
+      line-height: 2.2;
+      max-width: 550px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 25px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: .25s;
+    }
+
+    .primary {
+      background: #00e5ff;
+      color: #080817;
+      box-shadow: 0 0 25px #00e5ff35;
+    }
+
+    .secondary {
+      border: 1px solid #ffffff35;
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px #00e5ff40;
+    }
+
+    .section {
+      padding: 55px 8%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .section h2 span {
+      color: #00e5ff;
+    }
+
+    .subtitle {
+      color: #9999ae;
+      margin-bottom: 30px;
+      line-height: 2;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: #ffffff08;
+      border: 1px solid #ffffff16;
+      border-radius: 18px;
+      padding: 28px 20px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      border-color: #00e5ff90;
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00e5ff12;
+    }
+
+    .card .emoji {
+      font-size: 35px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #a4a4b8;
+      line-height: 2;
+      font-size: 14px;
+    }
+
+    .contact {
+      max-width: 650px;
+      margin: auto;
+      padding: 35px 20px;
+      border: 1px solid #00e5ff30;
+      background: #00e5ff08;
+      border-radius: 20px;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 25px;
+      text-align: center;
+      border-top: 1px solid #ffffff12;
+      color: #85859b;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .glow {
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00e5ff40; }
+      to { text-shadow: 0 0 30px #00e5ff; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">NEON.</div>
+    <a href="#contact">ارتباط با من ↗</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="badge">✦ خوش اومدی به دنیای من</div>
+
+      <h1>
+        سلام، من <span class="glow">صاحب این سایتم!</span>
+      </h1>
+
+      <p class="desc">
+        اینجا گوشه‌ای از دنیای منه؛
+        جایی برای ایده‌های خلاقانه، تکنولوژی
+        و ساختن چیزهای جذاب.
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="#about">بیشتر بشناس منو</a>
+        <a class="btn secondary" href="#contact">ارتباط با من</a>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>درباره <span>من</span></h2>
+      <p class="subtitle">
+        عاشق یادگیری، تکنولوژی و ساختن ایده‌های جدیدم.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="emoji">💻</div>
+          <h3>برنامه‌نویسی</h3>
+          <p>ساخت پروژه‌های جذاب و یادگیری مهارت‌های جدید.</p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">🚀</div>
+          <h3>ایده‌های تازه</h3>
+          <p>تبدیل فکرهای خلاقانه به پروژه‌های واقعی.</p>
+        </div>
+
+        <div class="card">
+          <div class="emoji">⚡</div>
+          <h3>دنیای نئونی</h3>
+          <p>طراحی‌های مدرن با رنگ‌های درخشان و افکت‌های جذاب.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="contact">
+        <h2>بیا در <span style="color:#00e5ff">ارتباط</span> باشیم</h2>
+        <p class="subtitle" style="margin-top:15px;margin-bottom:20px">
+          این بخش رو می‌تونی با لینک تلگرام یا شبکه اجتماعی خودت تکمیل کنی.
+        </p>
+        <a class="btn primary"
+           href="https://t.me/"
+           target="_blank"
+           rel="noopener noreferrer">
+          تلگرام من ↗
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ساخته شده با ❤️ و کلی انرژی نئونی
+    <br>
+    © <span id="year"></span> تمامی حقوق محفوظ است.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
+
