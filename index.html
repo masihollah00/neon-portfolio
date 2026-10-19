@@ -2,631 +2,117 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080611">
-  <meta name="description" content="پرتفولیوی شخصی مسیح مختاری؛ برنامه‌نویس و سازنده پروژه‌های دیجیتال">
-  <title>Masih Hackring | Cyber Portfolio</title>
-
-  <style>
-    :root {
-      --bg: #080611;
-      --panel: #100c20;
-      --cyan: #00f5ff;
-      --purple: #b026ff;
-      --text: #f5f2ff;
-      --muted: #aaa4c0;
-      --line: rgba(176, 38, 255, .25);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
-    body {
-      font-family: Tahoma, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.9;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(ellipse at 15% 15%, #8b19db22, transparent 40%),
-        radial-gradient(ellipse at 85% 65%, #00f5ff17, transparent 40%);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: .13;
-      background-image:
-        linear-gradient(#8b19db20 1px, transparent 1px),
-        linear-gradient(90deg, #8b19db20 1px, transparent 1px);
-      background-size: 38px 38px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(1080px, 90%);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #080611eF;
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .logo {
-      color: var(--cyan);
-      font-size: 19px;
-      font-weight: 900;
-      text-shadow: 0 0 16px #00f5ff55;
-      direction: ltr;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 12px;
-      transition: .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--cyan);
-    }
-
-    .hero {
-      min-height: 82vh;
-      display: flex;
-      align-items: center;
-      padding: 80px 0 65px;
-    }
-
-    .hero-content {
-      max-width: 820px;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 14px;
-      border: 1px solid #00f5ff44;
-      background: #00f5ff0b;
-      border-radius: 30px;
-      color: var(--cyan);
-      font-size: 12px;
-      margin-bottom: 24px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #39ff88;
-      box-shadow: 0 0 12px #39ff88;
-    }
-
-    h1 {
-      font-size: clamp(33px, 7vw, 68px);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-
-    h1 span {
-      color: var(--cyan);
-      text-shadow: 0 0 24px #00f5ff55;
-    }
-
-    .handle {
-      direction: ltr;
-      display: inline-block;
-      color: var(--purple);
-      font-size: clamp(18px, 4vw, 28px);
-      font-weight: bold;
-      text-shadow: 0 0 18px #b026ff66;
-      margin-bottom: 20px;
-    }
-
-    .intro {
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 30px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 21px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 13px;
-      transition: .25s;
-    }
-
-    .btn-primary {
-      background: var(--cyan);
-      color: #080611;
-      box-shadow: 0 0 22px #00f5ff25;
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
-      background: #ffffff05;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 25px #b026ff33;
-    }
-
-    .terminal {
-      margin-top: 44px;
-      max-width: 670px;
-      border: 1px solid #b026ff44;
-      border-radius: 14px;
-      background: #090713e8;
-      overflow: hidden;
-      box-shadow: 0 0 35px #b026ff0d;
-    }
-
-    .terminal-bar {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 12px 15px;
-      background: #ffffff06;
-      border-bottom: 1px solid #ffffff0d;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .terminal-bar .circle {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--purple);
-    }
-
-    .terminal-content {
-      padding: 19px;
-      direction: ltr;
-      text-align: left;
-      font: 13px/2.1 monospace;
-      overflow-wrap: anywhere;
-    }
-
-    .terminal-content .green {
-      color: #39ff88;
-    }
-
-    .terminal-content .blue {
-      color: var(--cyan);
-    }
-
-    .terminal-content .purple {
-      color: #d69cff;
-    }
-
-    .section {
-      padding: 70px 0;
-    }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .eyebrow {
-      color: var(--purple);
-      font-size: 11px;
-      letter-spacing: 2px;
-      direction: ltr;
-    }
-
-    h2 {
-      font-size: clamp(25px, 5vw, 36px);
-      margin-top: 6px;
-    }
-
-    h2 span {
-      color: var(--cyan);
-    }
-
-    .section-desc {
-      max-width: 650px;
-      margin: 12px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 17px;
-    }
-
-    .card {
-      padding: 24px 21px;
-      background: linear-gradient(145deg, #151027, #0c0917);
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #00f5ff88;
-      box-shadow: 0 10px 35px #00f5ff0b;
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border: 1px solid #00f5ff40;
-      background: #00f5ff0b;
-      border-radius: 12px;
-      color: var(--cyan);
-      font-size: 23px;
-      margin-bottom: 17px;
-    }
-
-    .card h3 {
-      font-size: 16px;
-      margin-bottom: 9px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 2.2;
-    }
-
-    .tag {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 4px 9px;
-      border: 1px solid #b026ff44;
-      border-radius: 6px;
-      color: #d69cff;
-      font-size: 10px;
-    }
-
-    .about-box {
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: #100c20cc;
-    }
-
-    .about-box p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2.5;
-    }
-
-    .values {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .values span {
-      padding: 7px 12px;
-      border: 1px solid #00f5ff30;
-      background: #00f5ff08;
-      border-radius: 8px;
-      color: var(--cyan);
-      font-size: 11px;
-    }
-
-    .contact-box {
-      text-align: center;
-      padding: 40px 22px;
-      border: 1px solid #00f5ff35;
-      border-radius: 20px;
-      background: radial-gradient(ellipse at top, #00f5ff0c, transparent 70%);
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      font-size: 13px;
-      margin: 12px 0 24px;
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 24px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    footer strong {
-      color: var(--cyan);
-    }
-
-    @media (max-width: 720px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 65px;
-      }
-
-      .nav-links {
-        gap: 10px;
-      }
-
-      .nav-links a {
-        font-size: 10px;
-      }
-
-      .logo {
-        font-size: 15px;
-      }
-
-      .about-box {
-        padding: 22px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مسیح مختاری | Masih Hackring</title>
+<meta name="description" content="وب‌سایت رسمی مسیح مختاری، Masih Hackring؛ برنامه‌نویسی پایتون، ساخت ربات تلگرام، طراحی سایت و آموزش امنیت سایبری.">
+<meta name="keywords" content="مسیح, مسیح مختاری, مسیح هکرینگ, اسطوره تلگرام, Masih Hackring, پایتون, ربات تلگرام">
+<meta name="author" content="Masih Mokhtari">
+<meta name="theme-color" content="#080816">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#080816;color:#f5f5ff;font-family:Tahoma,Arial,sans-serif;line-height:2}
+header{position:sticky;top:0;background:#080816ee;border-bottom:1px solid #00f5ff55;padding:12px;z-index:2}
+nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+a{color:#00f5ff;text-decoration:none}
+nav div{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.container{width:90%;max-width:1000px;margin:auto}
+.hero{text-align:center;padding:90px 0 70px}
+.tag{color:#00f5ff;border:1px solid #00f5ff55;border-radius:25px;padding:5px 15px;font-size:13px}
+h1{font-size:clamp(32px,7vw,58px);line-height:1.5}
+.glow{color:#00f5ff;text-shadow:0 0 18px #00f5ff88}
+.purple{color:#c16aff}
+p{color:#c5c5dc}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;padding:8px 20px;border:1px solid #00f5ff;border-radius:9px}
+.btn.primary{background:#00f5ff;color:#080816;font-weight:bold}
+section{padding:40px 0}
+h2{text-align:center;font-size:29px}
+.desc{text-align:center;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:linear-gradient(140deg,#17172f,#101020);border:1px solid #00f5ff44;border-radius:15px;padding:20px;transition:.2s}
+.card:hover{border-color:#c16aff;transform:translateY(-4px)}
+.card h3{color:#00f5ff;margin-top:0}
+.card p{font-size:14px}
+.skills{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.skills span{border:1px solid #c16aff77;color:#e4caff;border-radius:8px;padding:5px 12px}
+.contact{text-align:center;background:#15132b;border:1px solid #00f5ff55;border-radius:18px;padding:28px}
+footer{text-align:center;border-top:1px solid #00f5ff33;padding:20px;color:#aaa;font-size:13px}
+@media(max-width:500px){nav{justify-content:center}.hero{padding-top:60px}}
+</style>
 </head>
-
 <body>
-  <header>
-    <nav class="container">
-      <div class="logo">MASIH.HACKRING</div>
-      <div class="nav-links">
-        <a href="#about">درباره من</a>
-        <a href="#skills">مهارت‌ها</a>
-        <a href="#projects">پروژه‌ها</a>
-        <a href="#contact">ارتباط</a>
-      </div>
-    </nav>
-  </header>
+<header>
+<nav>
+<strong class="glow">MASIH HACKRING</strong>
+<div>
+<a href="#about">درباره من</a>
+<a href="#projects">پروژه‌ها</a>
+<a href="#skills">مهارت‌ها</a>
+<a href="#contact">ارتباط</a>
+</div>
+</nav>
+</header>
 
-  <main>
-    <section class="hero container">
-      <div class="hero-content">
-        <div class="status">
-          <span class="dot"></span>
-          به پرتفولیوی من خوش اومدی
-        </div>
+<main>
+<div class="hero container">
+<span class="tag">برنامه‌نویسی | تکنولوژی | خلاقیت</span>
+<h1>کدنویس <span class="glow">مسیح مختاری</span></h1>
+<h2 class="purple">Masih Hackring</h2>
+<p>به دنیای برنامه‌نویسی و پروژه‌های خفن من خوش اومدی!</p>
+<p>ساخت ربات، طراحی سایت، برنامه‌نویسی پایتون و آموزش ابزارهای تکنولوژی.</p>
+<div class="actions">
+<a class="btn primary" href="#projects">مشاهده پروژه‌ها</a>
+<a class="btn" href="https://t.me/Ma3ih01" target="_blank" rel="noopener">ارتباط با من</a>
+</div>
+</div>
 
-        <h1>
-          من <span>کدنویس مسیح مختاری</span> هستم
-        </h1>
+<section id="about" class="container">
+<h2>درباره <span class="glow">من</span></h2>
+<p class="desc">من مسیح مختاری هستم؛ علاقه‌مند به برنامه‌نویسی، ساخت ابزار و یادگیری امنیت سایبری.</p>
+</section>
 
-        <div class="handle"> &lt; Masih Hackring /&gt; </div>
+<section id="projects" class="container">
+<h2>پروژه‌ها و <span class="glow">فعالیت‌ها</span></h2>
+<p class="desc">ایده‌ها رو به پروژه‌های واقعی تبدیل می‌کنیم.</p>
+<div class="grid">
+<article class="card"><h3>🤖 ربات تلگرام</h3><p>ساخت ربات‌های کاربردی، مدیریت گروه و خودکارسازی کارها.</p></article>
+<article class="card"><h3>🌐 طراحی سایت</h3><p>ساخت سایت شخصی، صفحات واکنش‌گرا و طراحی نئونی.</p></article>
+<article class="card"><h3>🐍 برنامه‌نویسی Python</h3><p>اسکریپت‌ها و ابزارهای کاربردی با پایتون.</p></article>
+<article class="card"><h3>📱 آموزش AIDE</h3><p>آشنایی با ساخت برنامه‌های اندرویدی و ابزارهای توسعه.</p></article>
+<article class="card"><h3>⌨️ کیبورد و APK Editor</h3><p>شخصی‌سازی رابط کاربری و ویرایش برنامه‌ها در پروژه‌های مجاز.</p></article>
+<article class="card"><h3>🛠️ ترموکس</h3><p>آموزش دستورات، محیط لینوکس و ابزارهای برنامه‌نویسی.</p></article>
+<article class="card"><h3>🛡️ امنیت سایبری</h3><p>آموزش امنیت، دفاع از سیستم‌ها و تمرین در محیط آزمایشگاهی.</p></article>
+<article class="card"><h3>🎵 ساخت اپلیکیشن</h3><p>ایده‌پردازی و ساخت ابزارهای موبایل و موزیک‌پلیر.</p></article>
+</div>
+</section>
 
-        <p class="intro">
-          عاشق برنامه‌نویسی، تکنولوژی و ساخت پروژه‌های خلاقانه‌ام.
-          از توسعه سایت و ربات گرفته تا ابزارهای دیجیتال؛
-          اینجا محل معرفی ایده‌ها و کارهای منه.
-        </p>
+<section id="skills" class="container">
+<h2>مهارت‌ها و <span class="glow">ابزارها</span></h2>
+<div class="skills">
+<span>Python</span><span>HTML</span><span>CSS</span>
+<span>Telegram Bot</span><span>AIDE</span><span>Termux</span>
+<span>APK Editor</span><span>Web Design</span><span>Cybersecurity</span>
+</div>
+</section>
 
-        <div class="actions">
-          <a class="btn btn-primary" href="#projects">دیدن زمینه‌های کاری ↗</a>
-          <a class="btn btn-secondary" href="#contact">ارتباط با من</a>
-        </div>
+<section id="contact" class="container">
+<div class="contact">
+<h2>ارتباط با <span class="glow">مسیح</span></h2>
+<p>برای صحبت درباره پروژه‌ها و برنامه‌نویسی پیام بده.</p>
+<p>آیدی تلگرام: <strong dir="ltr">@Ma3ih01</strong></p>
+<p>شماره تماس: <strong dir="ltr">09398039515</strong></p>
+<div class="actions">
+<a class="btn primary" href="https://t.me/Ma3ih01" target="_blank" rel="noopener">✈️ پیام در تلگرام</a>
+<a class="btn" href="tel:+989398039515">📞 تماس تلفنی</a>
+</div>
+<p>فعالیت‌های امنیتی فقط با اجازه صاحب سیستم انجام می‌شوند.</p>
+</div>
+</section>
+</main>
 
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span style="margin-right:8px">masih@portfolio: ~</span>
-          </div>
-          <div class="terminal-content">
-            <div><span class="green">masih@cyber</span>:~$ whoami</div>
-            <div class="blue">Masih Mokhtari — Developer</div>
-            <div><span class="green">masih@cyber</span>:~$ interests --list</div>
-            <div class="purple">Web Development / Bots / Creative Tech</div>
-            <div><span class="green">masih@cyber</span>:~$ <span class="blue">build_ideas()</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="about">
-      <div class="section-head">
-        <div class="eyebrow">01 / ABOUT</div>
-        <h2>درباره <span>من</span></h2>
-        <p class="section-desc">
-          کنجکاوی، یادگیری و تبدیل ایده‌ها به پروژه‌های واقعی.
-        </p>
-      </div>
-
-      <div class="about-box">
-        <p>
-          من مسیح مختاری هستم و با لقب Masih Hackring فعالیت می‌کنم.
-          به دنیای کدنویسی، طراحی دیجیتال و ساخت ابزارهای کاربردی علاقه دارم.
-          هدفم یادگیری مداوم، ساخت پروژه‌های جدید و بهتر کردن مهارت‌هامه.
-          این سایت ویترین کارها و مسیر پیشرفت منه.
-        </p>
-        <div class="values">
-          <span>یادگیری مداوم</span>
-          <span>خلاقیت</span>
-          <span>حل مسئله</span>
-          <span>توسعه پروژه</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section container" id="skills">
-      <div class="section-head">
-        <div class="eyebrow">02 / SKILLS</div>
-        <h2>زمینه‌های <span>علاقه من</span></h2>
-        <p class="section-desc">
-          حوزه‌هایی که دوست دارم در آن‌ها پروژه بسازم و پیشرفت کنم.
-        </p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="icon">⌘</div>
-          <h3>برنامه‌نویسی</h3>
-          <p>تمرین کدنویسی، یادگیری زبان‌های برنامه‌نویسی و ساخت ابزارهای دیجیتال.</p>
-          <span class="tag">CODING</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">◈</div>
-          <h3>ساخت ربات</h3>
-          <p>طراحی ربات‌های تلگرام، خودکارسازی کارها و ساخت قابلیت‌های کاربردی.</p>
-          <span class="tag">BOT DEVELOPMENT</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">⌁</div>
-          <h3>طراحی سایت</h3>
-          <p>ساخت صفحات وب واکنش‌گرا با ظاهر مدرن، طراحی نئونی و تجربه کاربری خوب.</p>
-          <span class="tag">WEB DESIGN</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">⛨</div>
-          <h3>امنیت و دفاع دیجیتال</h3>
-          <p>آشنایی با امنیت سایبری، حفاظت از حساب‌ها و یادگیری اصول امن‌سازی پروژه‌ها.</p>
-          <span class="tag">CYBERSECURITY</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">⚡</div>
-          <h3>ابزارهای هوشمند</h3>
-          <p>ایده‌پردازی برای ابزارهای کاربردی و ساده‌کردن کارهای تکراری.</p>
-          <span class="tag">AUTOMATION</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">✦</div>
-          <h3>پروژه‌های خلاقانه</h3>
-          <p>تجربه‌کردن ایده‌های تازه و ساخت محصولات دیجیتال با طراحی خاص.</p>
-          <span class="tag">CREATIVE TECH</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="section container" id="projects">
-      <div class="section-head">
-        <div class="eyebrow">03 / PROJECTS</div>
-        <h2>میز کار <span>من</span></h2>
-        <p class="section-desc">
-          این بخش برای معرفی پروژه‌های واقعی تو آماده شده.
-        </p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="icon">🌐</div>
-          <h3>Neon Portfolio</h3>
-          <p>همین سایت شخصی با طراحی سایبرپانکی و رابط فارسی.</p>
-          <span class="tag">PERSONAL WEBSITE</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">🤖</div>
-          <h3>ربات تلگرام</h3>
-          <p>اینجا می‌تونی امکانات و ویژگی‌های رباتی که ساخته‌ای را معرفی کنی.</p>
-          <span class="tag">TELEGRAM BOT</span>
-        </article>
-
-        <article class="card">
-          <div class="icon">🔐</div>
-          <h3>پروژه امنیتی</h3>
-          <p>محل معرفی ابزارهای دفاعی، آموزشی و پروژه‌های آزمایشگاهی مجاز.</p>
-          <span class="tag">SECURITY LAB</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="section container" id="contact">
-      <div class="contact-box">
-        <div class="eyebrow">04 / CONTACT</div>
-        <h2>بیا چیزی <span>بسازیم!</span></h2>
-        <p>
-          این بخش را با لینک واقعی تلگرام یا صفحه اجتماعی خودت تکمیل کن.
-        </p>
-        <a class="btn btn-primary"
-           href="https://t.me/"
-           target="_blank"
-           rel="noopener noreferrer">
-          رفتن به تلگرام ↗
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    ساخته‌شده با 💜 برای <strong>Masih Hackring</strong>
-    <br>
-    © <span id="year"></span> کدنویس مسیح مختاری
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+<footer>ساخته‌شده با 💜 توسط <span class="glow">Masih Hackring</span> | © <span id="year"></span></footer>
+<script>document.getElementById("year").textContent=new Date().getFullYear()</script>
 </body>
 </html>
