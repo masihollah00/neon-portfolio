@@ -3,140 +3,196 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080817">
-<title>Masih Hackring | فروشگاه نئونی</title>
+<meta name="description" content="فروشگاه خدمات دیجیتال Masih Hackring؛ طراحی سایت، برنامه‌نویسی، ربات تلگرام و خدمات گرافیکی.">
+<title>Masih Hackring | فروشگاه خدمات دیجیتال</title>
 <style>
-:root{--bg:#080817;--panel:#111128;--cyan:#00f5ff;--pink:#ff35d3;--purple:#8c52ff;--text:#f5f5ff;--muted:#b7b7d2}
+:root{--bg:#080817;--panel:#12122b;--cyan:#00f5ff;--pink:#ff35d3;--purple:#8c52ff;--text:#f5f5ff;--muted:#b8b8d5;--line:#34345b}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#191044 0%,var(--bg) 58%);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+body{margin:0;background:radial-gradient(ellipse at top,#201044 0%,var(--bg) 55%);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+a{color:inherit}
 header{text-align:center;padding:45px 16px 28px}
-.logo{font-size:clamp(28px,7vw,48px);font-weight:900;color:var(--cyan);text-shadow:0 0 12px #00f5ff,0 0 30px #00f5ff66}
-header p{color:var(--muted);line-height:2;margin:12px auto;max-width:600px}
-.pill{display:inline-block;border:1px solid var(--pink);color:#ff8ce8;padding:8px 15px;border-radius:30px;margin-top:8px;box-shadow:0 0 14px #ff35d333}
+.logo{font-size:clamp(27px,7vw,48px);font-weight:900;color:var(--cyan);text-shadow:0 0 12px #00f5ff,0 0 32px #00f5ff55;line-height:1.5}
+header p{color:var(--muted);max-width:650px;margin:12px auto}
+.pill{display:inline-block;border:1px solid var(--pink);color:#ff9deb;padding:7px 15px;border-radius:30px;margin-top:10px}
 .wrap{max-width:1150px;margin:auto;padding:12px 16px 40px}
-.tools{position:sticky;top:0;z-index:5;background:#080817ed;padding:12px 0;backdrop-filter:blur(12px)}
-input{width:100%;padding:15px;border-radius:12px;background:#111128;border:1px solid #41416c;color:white;font:inherit;outline:none}
+nav{position:sticky;top:0;z-index:10;background:#09091af5;backdrop-filter:blur(12px);border-bottom:1px solid #292947;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px}
+nav a{font-size:13px;text-decoration:none;padding:8px 12px;border-radius:20px;border:1px solid var(--line)}
+nav a:hover{border-color:var(--cyan);color:var(--cyan)}
+.hero-buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.btn{display:inline-block;text-decoration:none;text-align:center;padding:11px 17px;border-radius:10px;font-weight:bold;border:1px solid var(--cyan);color:var(--cyan)}
+.btn.primary{background:linear-gradient(90deg,#8c52ff,#df2dc8);border:0;color:white}
+.section-title{font-size:23px;margin:28px 0 6px}
+.section-sub{color:var(--muted);font-size:13px;margin:0 0 18px}
+.tools{position:sticky;top:52px;z-index:5;background:#080817f5;padding:10px 0 6px}
+input{width:100%;padding:14px;border-radius:12px;background:#111128;border:1px solid var(--line);color:white;font:inherit;outline:none}
 input:focus{border-color:var(--cyan);box-shadow:0 0 12px #00f5ff33}
-.categories{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
-.cat{white-space:nowrap;border:1px solid #41416c;border-radius:22px;padding:10px 14px;background:#111128;color:white;font:inherit;cursor:pointer}
-.cat.active,.cat:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px #00f5ff33}
-.info{color:var(--muted);font-size:13px;margin:10px 2px 18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}
-.card{background:linear-gradient(145deg,#15152f,#0d0d20);border:1px solid #33335b;border-radius:16px;padding:18px;transition:.2s;display:flex;flex-direction:column;min-height:190px}
+.categories{display:flex;gap:8px;overflow-x:auto;padding:10px 0}
+.cat{white-space:nowrap;border:1px solid var(--line);border-radius:22px;padding:9px 13px;background:#111128;color:white;font:inherit;cursor:pointer}
+.cat.active,.cat:hover{border-color:var(--cyan);color:var(--cyan)}
+.info{color:var(--muted);font-size:13px;margin:10px 2px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:linear-gradient(145deg,#171731,#0d0d20);border:1px solid #33335b;border-radius:16px;padding:17px;display:flex;flex-direction:column;min-height:205px;transition:.2s}
 .card:hover{transform:translateY(-3px);border-color:var(--purple);box-shadow:0 0 18px #8c52ff25}
 .num{color:var(--cyan);font-size:12px}
-.card h3{font-size:16px;line-height:1.8;margin:10px 0}
-.card p{font-size:13px;color:var(--muted);line-height:1.9;margin:0 0 15px;flex:1}
-.price{color:#ff8ce8;font-size:13px;margin-bottom:14px}
-.order{display:block;text-align:center;text-decoration:none;background:linear-gradient(90deg,#8c52ff,#e12bc8);color:white;padding:12px;border-radius:10px;font-weight:bold}
+.card h3{font-size:16px;margin:8px 0;line-height:1.9}
+.card p{font-size:13px;color:var(--muted);margin:0 0 12px;flex:1}
+.price{color:#ff9deb;font-size:13px;margin-bottom:12px}
+.order{display:block;text-align:center;text-decoration:none;background:linear-gradient(90deg,#8c52ff,#df2dc8);color:white;padding:11px;border-radius:10px;font-weight:bold}
 .order:hover{filter:brightness(1.15)}
-.empty{display:none;text-align:center;padding:35px;color:var(--muted)}
-footer{text-align:center;padding:30px 15px;color:var(--muted);font-size:13px;line-height:2;border-top:1px solid #282844}
+.empty{display:none;text-align:center;padding:28px;color:var(--muted)}
+.contact{margin-top:45px;padding:25px;background:linear-gradient(145deg,#171731,#0e0e20);border:1px solid var(--line);border-radius:18px}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin-top:18px}
+.contact-card{border:1px solid var(--line);background:#0b0b1b;padding:18px;border-radius:13px;overflow-wrap:anywhere}
+.contact-card h3{margin:0 0 8px;color:var(--cyan);font-size:15px}
+.contact-card p{margin:0;color:var(--muted);font-size:13px}
+.contact-card a{color:#ff9deb;text-decoration:none}
+.contact-card a:hover{text-decoration:underline}
+.notice{color:var(--muted);font-size:12px;margin-top:18px}
+footer{text-align:center;padding:25px 15px;color:var(--muted);font-size:12px;border-top:1px solid #282844}
 footer a{color:var(--cyan);text-decoration:none}
+@media(max-width:500px){header{padding-top:30px}.section-title{font-size:20px}.card{min-height:180px}nav{gap:6px}nav a{padding:7px 9px}}
 </style>
 </head>
 <body>
+
 <header>
   <div class="logo">MASIH HACKRING</div>
-  <p>فروشگاه خدمات دیجیتال و برنامه‌نویسی<br>انتخاب کن، جزئیات سفارش رو در تلگرام بفرست و هماهنگ کن.</p>
-  <span class="pill">⚡ ۸۰ خدمت در ۸ دسته</span>
+  <p>فروشگاه خدمات دیجیتال، طراحی سایت و برنامه‌نویسی</p>
+  <p>خدمت موردنظرت رو انتخاب کن؛ با زدن دکمه سفارش، مستقیم به گفت‌وگوی تلگرام مسیح می‌ری.</p>
+  <span class="pill">⚡ ۸۰ خدمت | ۸ دسته‌بندی</span>
+  <div class="hero-buttons">
+    <a class="btn primary" href="#services">مشاهده خدمات</a>
+    <a class="btn" href="#contact">تماس با ما</a>
+  </div>
 </header>
 
+<nav aria-label="منوی سایت">
+  <a href="#services">خدمات</a>
+  <a href="#contact">تماس با ما</a>
+  <a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">تلگرام</a>
+</nav>
+
 <main class="wrap">
-  <div class="tools">
-    <input id="search" type="search" placeholder="🔎 جست‌وجوی خدمت..." aria-label="جست‌وجوی خدمات">
-    <div class="categories" id="categories"></div>
-  </div>
-  <div class="info" id="count">در حال نمایش خدمات...</div>
-  <section class="grid" id="services"></section>
-  <div class="empty" id="empty">خدمتی با این عبارت پیدا نشد.</div>
+  <section id="services">
+    <h2 class="section-title">⚡ خدمات فروشگاه</h2>
+    <p class="section-sub">خدمت دلخواهت رو جست‌وجو کن و برای ثبت سفارش پیام بده.</p>
+    <div class="tools">
+      <input id="search" type="search" placeholder="🔎 جست‌وجوی خدمات..." aria-label="جست‌وجوی خدمات">
+      <div class="categories" id="categories"></div>
+    </div>
+    <div class="info" id="count">۸۰ خدمت</div>
+    <div class="grid" id="servicesGrid"></div>
+    <div class="empty" id="empty">خدمتی پیدا نشد؛ عبارت دیگری جست‌وجو کن.</div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">📞 تماس با ما</h2>
+    <p class="section-sub">برای سؤال، دریافت قیمت، پیگیری سفارش و هماهنگی با ما تماس بگیر.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>✈️ تلگرام مستقیم</h3>
+        <p>برای سفارش و گفت‌وگو با مسیح:</p>
+        <p><a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">@Ma3ih01 — باز کردن تلگرام</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>📱 شماره تماس</h3>
+        <p>تماس تلفنی با هماهنگی:</p>
+        <p><a href="tel:09398039515">09398039515</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>🛒 ثبت سفارش</h3>
+        <p>نام خدمت رو انتخاب کن تا پیام آماده در تلگرام باز بشه.</p>
+        <p><a href="#services">رفتن به فهرست خدمات ←</a></p>
+      </div>
+    </div>
+    <p class="notice">قیمت، زمان تحویل و جزئیات هر سفارش قبل از شروع با هماهنگی مشخص می‌شود. شماره تلفن بالا برای بازدیدکنندگان سایت قابل مشاهده است.</p>
+  </section>
 </main>
 
 <footer>
-  <div>طراحی نئونی | Masih Hackring</div>
-  <div>قیمت و زمان انجام هر خدمت قبل از شروع در تلگرام هماهنگ می‌شود.</div>
-  <div>ارتباط و سفارش: <a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">@Ma3ih01</a></div>
+  <p>Masih Hackring © فروشگاه خدمات دیجیتال</p>
+  <p><a href="#contact">تماس با ما</a> · <a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">تلگرام</a></p>
 </footer>
 
 <script>
-const groups = [
-{ name:"طراحی سایت", icon:"🌐", items:[
+const groups=[
+{name:"طراحی سایت",icon:"🌐",items:[
 "طراحی سایت شخصی","طراحی سایت شرکتی","طراحی فروشگاه اینترنتی","طراحی صفحه فرود","طراحی سایت نمونه‌کار","طراحی سایت معرفی خدمات","طراحی صفحه تماس با ما","طراحی سایت واکنش‌گرا","بازطراحی ظاهر سایت","رفع ایرادهای ظاهری سایت"]},
-{ name:"برنامه‌نویسی", icon:"💻", items:[
+{name:"برنامه‌نویسی",icon:"💻",items:[
 "نوشتن کد پایتون","ساخت اسکریپت ساده","رفع خطای کد پایتون","بررسی و مرتب‌سازی کد","ساخت ابزار محاسباتی","تبدیل فایل‌های متنی","پردازش داده‌های ساده","ساخت ابزار خودکارسازی","توضیح کد و توابع","کمک به بهینه‌سازی کد"]},
-{ name:"ربات تلگرام", icon:"🤖", items:[
+{name:"ربات تلگرام",icon:"🤖",items:[
 "ساخت ربات تلگرام ساده","ساخت ربات پاسخ‌گوی خودکار","ساخت ربات دکمه‌ای","ساخت منوی ربات","ساخت ربات اطلاع‌رسانی","ساخت ربات پرسش‌وپاسخ","افزودن دستور به ربات","رفع خطای ربات پایتون","تنظیم پیام خوشامدگویی","راهنمای انتشار ربات"]},
-{ name:"گرافیک و برند", icon:"🎨", items:[
+{name:"گرافیک و برند",icon:"🎨",items:[
 "طراحی لوگوی ساده","طراحی بنر تبلیغاتی","طراحی عکس پروفایل","طراحی کاور شبکه اجتماعی","طراحی پوستر دیجیتال","انتخاب رنگ برند","طراحی کارت معرفی دیجیتال","طراحی بنر نئونی","طراحی تصویر هدر سایت","اصلاح طرح گرافیکی"]},
-{ name:"محتوا و متن", icon:"✍️", items:[
+{name:"محتوا و متن",icon:"✍️",items:[
 "نوشتن متن معرفی","نوشتن بیوی شبکه اجتماعی","نوشتن توضیحات محصول","نوشتن متن تبلیغاتی","ایده‌پردازی برای محتوا","ویرایش متن فارسی","بازنویسی متن ساده","نوشتن پرسش‌های متداول","تهیه متن راهنمای کاربر","نوشتن معرفی پروژه"]},
-{ name:"ابزار و اتوماسیون", icon:"⚙️", items:[
+{name:"ابزار و اتوماسیون",icon:"⚙️",items:[
 "ساخت ابزار تغییر متن","ساخت ابزار شمارش","ساخت تولیدکننده رمز امن","ساخت ابزار مدیریت فهرست","ساخت تبدیل‌گر واحدها","ساخت ابزار مرتب‌سازی متن","ساخت فرم ثبت اطلاعات","خودکارسازی کار تکراری","ساخت ابزار بررسی فایل","ساخت ابزار زمان‌بندی ساده"]},
-{ name:"مشاوره و آموزش", icon:"📚", items:[
+{name:"مشاوره و آموزش",icon:"📚",items:[
 "آموزش مقدماتی HTML","آموزش مقدماتی CSS","آموزش مقدماتی پایتون","آموزش ساخت صفحه وب","راهنمای GitHub","راهنمای انتشار سایت","راهنمای رفع خطای کد","بررسی ساختار پروژه","راهنمای طراحی رابط کاربری","مشاوره شروع پروژه دیجیتال"]},
-{ name:"خدمات تکمیلی", icon:"🚀", items:[
+{name:"خدمات تکمیلی",icon:"🚀",items:[
 "ساخت صفحه لینک‌های شخصی","ساخت صفحه معرفی پروژه","ساخت صفحه پرسش‌وپاسخ","ساخت صفحه قوانین سایت","ساخت صفحه خدمات","ساخت قالب کارت دیجیتال","ساخت داشبورد نمایشی","ساخت صفحه وضعیت پروژه","بهبود نمایش موبایل","بررسی اولیه تجربه کاربری"]}
 ];
 
-const all = groups.flatMap((g,gi)=>g.items.map((name,si)=>({
-name, category:g.name, icon:g.icon, id:gi*10+si+1
+const all=groups.flatMap((g,gi)=>g.items.map((name,si)=>({
+name,category:g.name,icon:g.icon,id:gi*10+si+1
 })));
 
-let active = "همه";
-const cats = document.getElementById("categories");
-const grid = document.getElementById("services");
-const search = document.getElementById("search");
-const count = document.getElementById("count");
-const empty = document.getElementById("empty");
+const grid=document.getElementById("servicesGrid");
+const cats=document.getElementById("categories");
+const search=document.getElementById("search");
+const count=document.getElementById("count");
+const empty=document.getElementById("empty");
+let active="همه";
 
 ["همه",...groups.map(g=>g.name)].forEach(name=>{
-  const b=document.createElement("button");
-  b.className="cat"+(name==="همه"?" active":"");
-  b.textContent=name==="همه"?"✨ همه خدمات":name;
-  b.type="button";
-  b.onclick=()=>{
-    active=name;
-    document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===b));
-    render();
-  };
-  cats.appendChild(b);
+ const b=document.createElement("button");
+ b.type="button";
+ b.className="cat"+(name==="همه"?" active":"");
+ b.textContent=name==="همه"?"✨ همه خدمات":name;
+ b.addEventListener("click",()=>{
+  active=name;
+  cats.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===b));
+  render();
+ });
+ cats.appendChild(b);
 });
 
 function render(){
-  const q=search.value.trim().toLocaleLowerCase("fa");
-  const filtered=all.filter(s=>
-    (active==="همه"||s.category===active) &&
-    (s.name.toLocaleLowerCase("fa").includes(q)||s.category.toLocaleLowerCase("fa").includes(q))
-  );
-  grid.replaceChildren();
-  filtered.forEach(s=>{
-    const card=document.createElement("article");
-    card.className="card";
-    const num=document.createElement("div");
-    num.className="num";
-    num.textContent=String(s.id).padStart(2,"0")+" · "+s.category;
-    const title=document.createElement("h3");
-    title.textContent=s.icon+" "+s.name;
-    const desc=document.createElement("p");
-    desc.textContent="برای جزئیات، هزینه و زمان انجام این خدمت پیام بده.";
-    const price=document.createElement("div");
-    price.className="price";
-    price.textContent="قیمت: توافقی";
-    const link=document.createElement("a");
-    link.className="order";
-    link.textContent="سفارش در تلگرام ↗";
-    link.href="https://t.me/Ma3ih01?text="+encodeURIComponent(
-      "سلام مسیح هکرینگ، برای این خدمت سفارش دارم:\nخدمت: "+s.name+
-      "\nدسته: "+s.category+"\nلطفاً قیمت و زمان انجام را اعلام کن."
-    );
-    link.target="_blank";
-    link.rel="noopener";
-    card.append(num,title,desc,price,link);
-    grid.appendChild(card);
-  });
-  count.textContent=filtered.length+" خدمت از "+all.length+" خدمت";
-  empty.style.display=filtered.length?"none":"block";
+ const q=search.value.trim().toLocaleLowerCase("fa");
+ const list=all.filter(s=>
+  (active==="همه"||s.category===active)&&
+  (s.name.toLocaleLowerCase("fa").includes(q)||s.category.toLocaleLowerCase("fa").includes(q))
+ );
+ grid.replaceChildren();
+ list.forEach(s=>{
+  const card=document.createElement("article");
+  card.className="card";
+  const num=document.createElement("div");
+  num.className="num";
+  num.textContent=String(s.id).padStart(2,"0")+" · "+s.category;
+  const title=document.createElement("h3");
+  title.textContent=s.icon+" "+s.name;
+  const desc=document.createElement("p");
+  desc.textContent="برای دریافت جزئیات، هزینه و زمان انجام پیام بده.";
+  const price=document.createElement("div");
+  price.className="price";
+  price.textContent="قیمت: توافقی";
+  const order=document.createElement("a");
+  order.className="order";
+  order.textContent="سفارش مستقیم در تلگرام ↗";
+  const message="سلام مسیح هکرینگ، برای سفارش این خدمت پیام می‌دهم:\nخدمت: "+s.name+"\nدسته: "+s.category+"\nلطفاً هزینه و زمان انجام را اعلام کن.";
+  order.href="https://t.me/Ma3ih01?text="+encodeURIComponent(message);
+  order.target="_blank";
+  order.rel="noopener noreferrer";
+  card.append(num,title,desc,price,order);
+  grid.appendChild(card);
+ });
+ count.textContent="نمایش "+list.length+" خدمت از "+all.length+" خدمت";
+ empty.style.display=list.length?"none":"block";
 }
 search.addEventListener("input",render);
 render();
