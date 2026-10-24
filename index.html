@@ -3,199 +3,994 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080817">
-<meta name="description" content="فروشگاه خدمات دیجیتال Masih Hackring؛ طراحی سایت، برنامه‌نویسی، ربات تلگرام و خدمات گرافیکی.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="description" content="Masih Hackring؛ فروشگاه خدمات دیجیتال شامل طراحی سایت، برنامه‌نویسی، ساخت ربات تلگرام، گرافیک و ابزارهای دیجیتال. مشاهده خدمات و ثبت سفارش مستقیم.">
+<meta name="author" content="Masih Hackring">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Masih Hackring | فروشگاه خدمات دیجیتال">
+<meta property="og:description" content="۸۰ خدمت دیجیتال در ۸ دسته؛ خدمات برنامه‌نویسی، طراحی سایت و ربات تلگرام.">
+<meta property="og:url" content="https://neon-portfolio-7vhj.onrender.com/">
+<meta property="og:site_name" content="Masih Hackring">
+<link rel="canonical" href="https://neon-portfolio-7vhj.onrender.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080817'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='%2300f5ff'%3EM%3C/text%3E%3C/svg%3E">
 <title>Masih Hackring | فروشگاه خدمات دیجیتال</title>
-<style>
-:root{--bg:#080817;--panel:#12122b;--cyan:#00f5ff;--pink:#ff35d3;--purple:#8c52ff;--text:#f5f5ff;--muted:#b8b8d5;--line:#34345b}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:150px}
-body{margin:0;background:radial-gradient(ellipse at top,#201044 0%,var(--bg) 55%);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
-a{color:inherit}
-header{text-align:center;padding:45px 16px 28px}
-.logo{font-size:clamp(27px,7vw,48px);font-weight:900;color:var(--cyan);text-shadow:0 0 12px #00f5ff,0 0 32px #00f5ff55;line-height:1.5}
-header p{color:var(--muted);max-width:650px;margin:12px auto}
-.pill{display:inline-block;border:1px solid var(--pink);color:#ff9deb;padding:7px 15px;border-radius:30px;margin-top:10px}
-.wrap{max-width:1150px;margin:auto;padding:12px 16px 40px}
-nav{position:sticky;top:0;z-index:10;background:#09091af5;backdrop-filter:blur(12px);border-bottom:1px solid #292947;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px}
-nav a{font-size:13px;text-decoration:none;padding:8px 12px;border-radius:20px;border:1px solid var(--line)}
-nav a:hover{border-color:var(--cyan);color:var(--cyan)}
-.hero-buttons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
-.btn{display:inline-block;text-decoration:none;text-align:center;padding:11px 17px;border-radius:10px;font-weight:bold;border:1px solid var(--cyan);color:var(--cyan)}
-.btn.primary{background:linear-gradient(90deg,#8c52ff,#df2dc8);border:0;color:white}
-.section-title{font-size:23px;margin:28px 0 6px}
-.section-sub{color:var(--muted);font-size:13px;margin:0 0 18px}
-.tools{position:sticky;top:52px;z-index:5;background:#080817f5;padding:10px 0 6px}
-input{width:100%;padding:14px;border-radius:12px;background:#111128;border:1px solid var(--line);color:white;font:inherit;outline:none}
-input:focus{border-color:var(--cyan);box-shadow:0 0 12px #00f5ff33}
-.categories{display:flex;gap:8px;overflow-x:auto;padding:10px 0}
-.cat{white-space:nowrap;border:1px solid var(--line);border-radius:22px;padding:9px 13px;background:#111128;color:white;font:inherit;cursor:pointer}
-.cat.active,.cat:hover{border-color:var(--cyan);color:var(--cyan)}
-.info{color:var(--muted);font-size:13px;margin:10px 2px 16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.card{background:linear-gradient(145deg,#171731,#0d0d20);border:1px solid #33335b;border-radius:16px;padding:17px;display:flex;flex-direction:column;min-height:205px;transition:.2s}
-.card:hover{transform:translateY(-3px);border-color:var(--purple);box-shadow:0 0 18px #8c52ff25}
-.num{color:var(--cyan);font-size:12px}
-.card h3{font-size:16px;margin:8px 0;line-height:1.9}
-.card p{font-size:13px;color:var(--muted);margin:0 0 12px;flex:1}
-.price{color:#ff9deb;font-size:13px;margin-bottom:12px}
-.order{display:block;text-align:center;text-decoration:none;background:linear-gradient(90deg,#8c52ff,#df2dc8);color:white;padding:11px;border-radius:10px;font-weight:bold}
-.order:hover{filter:brightness(1.15)}
-.empty{display:none;text-align:center;padding:28px;color:var(--muted)}
-.contact{margin-top:45px;padding:25px;background:linear-gradient(145deg,#171731,#0e0e20);border:1px solid var(--line);border-radius:18px}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin-top:18px}
-.contact-card{border:1px solid var(--line);background:#0b0b1b;padding:18px;border-radius:13px;overflow-wrap:anywhere}
-.contact-card h3{margin:0 0 8px;color:var(--cyan);font-size:15px}
-.contact-card p{margin:0;color:var(--muted);font-size:13px}
-.contact-card a{color:#ff9deb;text-decoration:none}
-.contact-card a:hover{text-decoration:underline}
-.notice{color:var(--muted);font-size:12px;margin-top:18px}
-footer{text-align:center;padding:25px 15px;color:var(--muted);font-size:12px;border-top:1px solid #282844}
-footer a{color:var(--cyan);text-decoration:none}
-@media(max-width:500px){header{padding-top:30px}.section-title{font-size:20px}.card{min-height:180px}nav{gap:6px}nav a{padding:7px 9px}}
-</style>
-</head>
-<body>
 
-<header>
-  <div class="logo">MASIH HACKRING</div>
-  <p>فروشگاه خدمات دیجیتال، طراحی سایت و برنامه‌نویسی</p>
-  <p>خدمت موردنظرت رو انتخاب کن؛ با زدن دکمه سفارش، مستقیم به گفت‌وگوی تلگرام مسیح می‌ری.</p>
-  <span class="pill">⚡ ۸۰ خدمت | ۸ دسته‌بندی</span>
-  <div class="hero-buttons">
-    <a class="btn primary" href="#services">مشاهده خدمات</a>
-    <a class="btn" href="#contact">تماس با ما</a>
+<!--
+تأیید گوگل:
+بعد از دریافت کد واقعی HTML tag از Google Search Console،
+تگ meta تأیید را اینجا قرار بده.
+کد تأیید را حدس نزن؛ باید از حساب خودت دریافت شود.
+-->
+
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #080817;
+  --panel: #12122b;
+  --panel2: #171733;
+  --cyan: #00f5ff;
+  --pink: #ff35d3;
+  --purple: #8c52ff;
+  --text: #f5f5ff;
+  --muted: #b8b8d5;
+  --line: #34345b;
+  --success: #67ffc5;
+  --radius: 17px;
+  --shadow: 0 0 25px #00f5ff12;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 135px;
+}
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, #251044 0%, transparent 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+a {
+  color: inherit;
+}
+button, input {
+  font: inherit;
+}
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+.container {
+  width: min(1150px, 100% - 30px);
+  margin-inline: auto;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 12px;
+}
+.topline {
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+}
+header {
+  text-align: center;
+  padding: 38px 14px 32px;
+}
+.brand {
+  color: var(--cyan);
+  font-size: clamp(27px, 7vw, 49px);
+  font-weight: 900;
+  line-height: 1.6;
+  text-shadow: 0 0 13px #00f5ff88, 0 0 35px #00f5ff22;
+}
+.brand-sub {
+  color: var(--pink);
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.hero-description {
+  max-width: 700px;
+  margin: 12px auto;
+  color: var(--muted);
+}
+.pill {
+  display: inline-block;
+  border: 1px solid var(--pink);
+  color: #ffa0ec;
+  padding: 5px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 17px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  transition: .2s;
+}
+.btn:hover {
+  box-shadow: 0 0 15px #00f5ff28;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--purple), #db2bc4);
+  border: 0;
+  color: white;
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: #09091af5;
+  backdrop-filter: blur(14px);
+  border-block: 1px solid #292947;
+}
+nav a {
+  text-decoration: none;
+  font-size: 12px;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  color: var(--muted);
+}
+nav a:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+section {
+  padding-block: 24px;
+}
+.section-heading {
+  font-size: clamp(21px, 4vw, 27px);
+  margin: 0 0 5px;
+}
+.section-description {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+.stat {
+  background: #111128;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 15px 7px;
+  text-align: center;
+}
+.stat strong {
+  display: block;
+  color: var(--cyan);
+  font-size: 21px;
+}
+.stat span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #171731, #0d0d20);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 13px;
+}
+.feature {
+  border: 1px solid var(--line);
+  background: #101025;
+  border-radius: 13px;
+  padding: 17px;
+}
+.feature-icon {
+  font-size: 24px;
+}
+.feature h3 {
+  margin: 5px 0;
+  font-size: 15px;
+}
+.feature p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+}
+.tools {
+  position: sticky;
+  top: 48px;
+  z-index: 10;
+  padding: 10px 0 6px;
+  background: #080817f7;
+}
+.search-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  color: white;
+  background: #111128;
+}
+.search-input:focus {
+  border-color: var(--cyan);
+}
+.categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin;
+}
+.category-button {
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 8px 13px;
+  border-radius: 24px;
+  background: #111128;
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 12px;
+}
+.category-button.active,
+.category-button:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.result-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 9px 2px 15px;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 13px;
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #171731, #0d0d20);
+  transition: transform .2s, border-color .2s;
+}
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--purple);
+}
+.service-meta {
+  color: var(--cyan);
+  font-size: 11px;
+}
+.service-card h3 {
+  font-size: 15px;
+  margin: 9px 0;
+  line-height: 1.9;
+}
+.service-card p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 12px;
+  flex: 1;
+}
+.service-price {
+  color: #ffa0ec;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.order-button {
+  display: block;
+  padding: 10px;
+  border-radius: 9px;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(90deg, var(--purple), #db2bc4);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+.order-button:hover {
+  filter: brightness(1.15);
+}
+.empty {
+  display: none;
+  color: var(--muted);
+  padding: 28px;
+  text-align: center;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 13px;
+}
+.contact-card {
+  padding: 18px;
+  border-radius: 13px;
+  border: 1px solid var(--line);
+  background: #101025;
+  overflow-wrap: anywhere;
+}
+.contact-card h3 {
+  color: var(--cyan);
+  font-size: 15px;
+  margin: 0 0 7px;
+}
+.contact-card p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0 0 7px;
+}
+.contact-card a {
+  color: #ffa0ec;
+  text-decoration: none;
+}
+.contact-card a:hover {
+  text-decoration: underline;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+.step {
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.step b {
+  color: var(--cyan);
+}
+.step p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 0;
+}
+details {
+  border: 1px solid var(--line);
+  background: #111128;
+  padding: 13px 15px;
+  border-radius: 11px;
+  margin-bottom: 9px;
+}
+summary {
+  cursor: pointer;
+  font-size: 13px;
+}
+details p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.legal-list {
+  color: var(--muted);
+  font-size: 13px;
+  padding-right: 20px;
+}
+.legal-list li {
+  margin: 7px 0;
+}
+.notice {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 17px;
+}
+footer {
+  border-top: 1px solid #292947;
+  text-align: center;
+  padding: 27px 15px;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 20px;
+}
+footer a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+.back-top {
+  display: inline-block;
+  margin-top: 8px;
+}
+@media(max-width:520px) {
+  header {
+    padding-top: 27px;
+  }
+  .container {
+    width: calc(100% - 22px);
+  }
+  .stats {
+    gap: 6px;
+  }
+  .stat strong {
+    font-size: 18px;
+  }
+  .stat span {
+    font-size: 10px;
+  }
+  nav {
+    gap: 3px;
+    padding: 7px 3px;
+  }
+  nav a {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  .panel {
+    padding: 16px;
+  }
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  }
+  .service-card {
+    padding: 13px;
+    min-height: 215px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Masih Hackring",
+  "url": "https://neon-portfolio-7vhj.onrender.com/",
+  "description": "فروشگاه خدمات دیجیتال، طراحی سایت، برنامه‌نویسی و ربات تلگرام.",
+  "sameAs": ["https://t.me/Ma3ih01"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://t.me/Ma3ih01",
+    "availableLanguage": ["Persian"]
+  }
+}
+</script>
+</head>
+
+<body>
+<div class="topline"></div>
+
+<header id="top">
+  <div class="brand">MASIH HACKRING</div>
+  <div class="brand-sub">DIGITAL SERVICES</div>
+  <p class="hero-description">
+    فروشگاه خدمات دیجیتال و برنامه‌نویسی؛
+    از طراحی سایت و ابزارهای دیجیتال تا ربات تلگرام و گرافیک.
+    خدمت موردنظرت رو انتخاب کن و برای هماهنگی سفارش پیام بده.
+  </p>
+  <span class="pill">⚡ ۸۰ خدمت در ۸ دسته</span>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#services">مشاهده خدمات</a>
+    <a class="btn" href="#contact">ارتباط با ما</a>
+  </div>
+  <div class="container stats">
+    <div class="stat"><strong>۸۰</strong><span>خدمت فهرست‌شده</span></div>
+    <div class="stat"><strong>۸</strong><span>دسته‌بندی خدمات</span></div>
+    <div class="stat"><strong>مستقیم</strong><span>ارتباط در تلگرام</span></div>
   </div>
 </header>
 
-<nav aria-label="منوی سایت">
+<nav aria-label="منوی اصلی">
+  <a href="#top">خانه</a>
   <a href="#services">خدمات</a>
+  <a href="#about">درباره ما</a>
+  <a href="#how-to-order">راهنمای سفارش</a>
+  <a href="#faq">سؤالات متداول</a>
   <a href="#contact">تماس با ما</a>
-  <a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">تلگرام</a>
+  <a href="#rules">قوانین</a>
 </nav>
 
-<main class="wrap">
-  <section id="services">
-    <h2 class="section-title">⚡ خدمات فروشگاه</h2>
-    <p class="section-sub">خدمت دلخواهت رو جست‌وجو کن و برای ثبت سفارش پیام بده.</p>
-    <div class="tools">
-      <input id="search" type="search" placeholder="🔎 جست‌وجوی خدمات..." aria-label="جست‌وجوی خدمات">
-      <div class="categories" id="categories"></div>
-    </div>
-    <div class="info" id="count">۸۰ خدمت</div>
-    <div class="grid" id="servicesGrid"></div>
-    <div class="empty" id="empty">خدمتی پیدا نشد؛ عبارت دیگری جست‌وجو کن.</div>
-  </section>
+<main class="container">
 
-  <section id="contact" class="contact">
-    <h2 class="section-title">📞 تماس با ما</h2>
-    <p class="section-sub">برای سؤال، دریافت قیمت، پیگیری سفارش و هماهنگی با ما تماس بگیر.</p>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>✈️ تلگرام مستقیم</h3>
-        <p>برای سفارش و گفت‌وگو با مسیح:</p>
-        <p><a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">@Ma3ih01 — باز کردن تلگرام</a></p>
-      </div>
-      <div class="contact-card">
-        <h3>📱 شماره تماس</h3>
-        <p>تماس تلفنی با هماهنگی:</p>
-        <p><a href="tel:09398039515">09398039515</a></p>
-      </div>
-      <div class="contact-card">
-        <h3>🛒 ثبت سفارش</h3>
-        <p>نام خدمت رو انتخاب کن تا پیام آماده در تلگرام باز بشه.</p>
-        <p><a href="#services">رفتن به فهرست خدمات ←</a></p>
-      </div>
+<section id="highlights">
+  <h2 class="section-heading">چرا فروشگاه Masih Hackring؟</h2>
+  <p class="section-description">اطلاعات روشن و راه ارتباط مستقیم برای شروع سفارش.</p>
+  <div class="feature-grid">
+    <article class="feature">
+      <div class="feature-icon">💻</div>
+      <h3>خدمات دیجیتال متنوع</h3>
+      <p>از طراحی سایت تا برنامه‌نویسی، ابزارهای دیجیتال و محتوای متنی.</p>
+    </article>
+    <article class="feature">
+      <div class="feature-icon">🔎</div>
+      <h3>جست‌وجوی سریع</h3>
+      <p>خدمت دلخواهت رو جست‌وجو کن یا از دسته‌بندی‌ها استفاده کن.</p>
+    </article>
+    <article class="feature">
+      <div class="feature-icon">✈️</div>
+      <h3>ارتباط مستقیم</h3>
+      <p>برای دریافت قیمت و زمان تحویل، مستقیم به تلگرام مسیح پیام بده.</p>
+    </article>
+    <article class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>مناسب موبایل</h3>
+      <p>چیدمان واکنش‌گرا برای گوشی، تبلت و رایانه.</p>
+    </article>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="section-heading">⚡ فهرست خدمات</h2>
+  <p class="section-description">
+    هزینه و زمان هر سفارش پس از بررسی نیازت مشخص می‌شود.
+    برای ثبت سفارش روی دکمهٔ همان خدمت بزن.
+  </p>
+  <div class="tools">
+    <input id="search" class="search-input" type="search"
+      placeholder="🔎 نام خدمت یا دسته‌بندی را بنویس..."
+      aria-label="جست‌وجوی خدمات">
+    <div id="categories" class="categories" aria-label="فیلتر دسته‌بندی"></div>
+  </div>
+  <div id="count" class="result-count" aria-live="polite"></div>
+  <div id="servicesGrid" class="service-grid"></div>
+  <div id="empty" class="empty">خدمتی پیدا نشد. عبارت دیگری را امتحان کن.</div>
+</section>
+
+<section id="about">
+  <div class="panel">
+    <h2 class="section-heading">دربارهٔ Masih Hackring</h2>
+    <p class="muted">
+      Masih Hackring یک برند خدمات دیجیتال با تمرکز بر طراحی وب،
+      برنامه‌نویسی، ربات‌های تلگرام، ابزارهای ساده و طراحی گرافیکی است.
+      هدف این فروشگاه، ارائهٔ فهرست روشن خدمات و فراهم‌کردن راهی ساده
+      برای گفت‌وگو دربارهٔ سفارش‌هاست.
+    </p>
+    <p class="muted">
+      قبل از شروع هر پروژه، جزئیات نیاز، هزینه، زمان تحویل و محدودهٔ کار
+      از طریق گفت‌وگو مشخص می‌شود. ثبت سفارش به معنی تأیید خودکار قیمت
+      یا شروع فوری پروژه نیست.
+    </p>
+    <a class="btn" href="#contact">ارتباط با مسیح</a>
+  </div>
+</section>
+
+<section id="how-to-order">
+  <h2 class="section-heading">🛒 راهنمای ثبت سفارش</h2>
+  <p class="section-description">چهار قدم ساده برای شروع هماهنگی.</p>
+  <div class="steps">
+    <article class="step">
+      <b>۱. انتخاب خدمت</b>
+      <p>از فهرست خدمات استفاده کن و مورد موردنظرت را پیدا کن.</p>
+    </article>
+    <article class="step">
+      <b>۲. زدن دکمهٔ سفارش</b>
+      <p>لینک تلگرام با متن آمادهٔ همان خدمت باز می‌شود.</p>
+    </article>
+    <article class="step">
+      <b>۳. ارسال پیام</b>
+      <p>پیام را بررسی کن و خودت آن را در گفت‌وگوی تلگرام ارسال کن.</p>
+    </article>
+    <article class="step">
+      <b>۴. هماهنگی نهایی</b>
+      <p>جزئیات، هزینه و زمان انجام را پیش از شروع تأیید کن.</p>
+    </article>
+  </div>
+  <p class="notice">
+    بازشدن تلگرام به نصب برنامه و دسترسی شبکهٔ دستگاه بستگی دارد.
+    اگر لینک باز نشد، از بخش تماس با ما وارد صفحهٔ تلگرام شو.
+  </p>
+</section>
+
+<section id="faq">
+  <h2 class="section-heading">❓ سؤالات متداول</h2>
+  <p class="section-description">پاسخ به پرسش‌های رایج دربارهٔ سفارش‌ها.</p>
+
+  <details>
+    <summary>چطور سفارش ثبت کنم؟</summary>
+    <p>خدمت را انتخاب کن، دکمهٔ سفارش را بزن و پیام آماده را در تلگرام ارسال کن.</p>
+  </details>
+  <details>
+    <summary>قیمت خدمات چقدر است؟</summary>
+    <p>قیمت ثابت برای همهٔ سفارش‌ها تعیین نشده است. هزینه با توجه به جزئیات هر پروژه هماهنگ می‌شود.</p>
+  </details>
+  <details>
+    <summary>آیا سفارش فوراً شروع می‌شود؟</summary>
+    <p>خیر. ابتدا باید جزئیات، هزینه، زمان تحویل و امکان انجام پروژه هماهنگ شود.</p>
+  </details>
+  <details>
+    <summary>دکمهٔ تلگرام باز نمی‌شود؛ چه کار کنم؟</summary>
+    <p>مطمئن شو تلگرام در دستگاهت قابل دسترسی است. همچنین می‌توانی لینک مستقیم تلگرام را از بخش تماس با ما باز کنی.</p>
+  </details>
+  <details>
+    <summary>آیا تمام خدمات همین حالا آمادهٔ تحویل هستند؟</summary>
+    <p>این صفحه فهرست خدمات قابل درخواست را نشان می‌دهد. امکان انجام، زمان و شرایط هر سفارش باید جداگانه تأیید شود.</p>
+  </details>
+  <details>
+    <summary>آیا بعد از سفارش رسید دریافت می‌کنم؟</summary>
+    <p>پیش از هر پرداخت، روش پرداخت و تأیید سفارش را مستقیم هماهنگ کن و سوابق گفت‌وگو را نگه دار.</p>
+  </details>
+  <details>
+    <summary>آیا سایت در گوگل نمایش داده می‌شود؟</summary>
+    <p>سایت برای موتورهای جست‌وجو تنظیمات پایه دارد؛ اما نمایش در نتایج به بررسی گوگل، دسترسی خزنده‌ها و عوامل دیگر بستگی دارد.</p>
+  </details>
+</section>
+
+<section id="contact">
+  <h2 class="section-heading">📞 تماس با ما</h2>
+  <p class="section-description">
+    برای پرسش، دریافت قیمت یا هماهنگی سفارش از راه تلگرام ارتباط بگیر.
+  </p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h3>✈️ تلگرام مستقیم</h3>
+      <p>گفت‌وگو با مسیح هکرینگ</p>
+      <p><a href="https://t.me/Ma3ih01" target="_blank" rel="noopener noreferrer">@Ma3ih01 — ورود به تلگرام</a></p>
     </div>
-    <p class="notice">قیمت، زمان تحویل و جزئیات هر سفارش قبل از شروع با هماهنگی مشخص می‌شود. شماره تلفن بالا برای بازدیدکنندگان سایت قابل مشاهده است.</p>
-  </section>
+    <div class="contact-card">
+      <h3>🛒 ثبت سفارش</h3>
+      <p>برای هر خدمت پیام اختصاصی آماده می‌شود.</p>
+      <p><a href="#services">رفتن به فهرست خدمات ←</a></p>
+    </div>
+    <div class="contact-card">
+      <h3>📝 پیش از سفارش</h3>
+      <p>شرح نیاز، زمان مدنظر و امکانات لازم را در پیام توضیح بده.</p>
+      <p><a href="#how-to-order">مشاهدهٔ راهنمای سفارش ←</a></p>
+    </div>
+  </div>
+  <p class="notice">
+    این سایت در حال حاضر فرم پرداخت آنلاین یا سیستم پیگیری خودکار سفارش ندارد.
+    سفارش‌ها از طریق گفت‌وگوی مستقیم هماهنگ می‌شوند.
+  </p>
+</section>
+
+<section id="rules">
+  <div class="panel">
+    <h2 class="section-heading">📋 قوانین و شرایط سفارش</h2>
+    <ul class="legal-list">
+      <li>قبل از شروع، شرح پروژه، هزینه و زمان تحویل باید مشخص و تأیید شوند.</li>
+      <li>صرفاً ارسال پیام به معنی پذیرش سفارش یا تضمین تحویل نیست.</li>
+      <li>اطلاعات حساس حساب‌ها، گذرواژه‌ها و کدهای ورود را در پیام ارسال نکن.</li>
+      <li>مشتری باید حق استفاده از فایل‌ها، تصاویر و محتوای ارسالی را داشته باشد.</li>
+      <li>هرگونه تغییر در محدودهٔ پروژه ممکن است نیازمند هماهنگی دوباره باشد.</li>
+      <li>تا پیش از توافق روشن دربارهٔ سفارش، پرداختی انجام نده.</li>
+    </ul>
+    <h3>حریم خصوصی</h3>
+    <p class="muted">
+      این نسخه فرم ثبت اطلاعات، پایگاه دادهٔ مشتریان یا سیستم پرداخت ندارد.
+      گفت‌وگوی سفارش از طریق تلگرام انجام می‌شود و تابع تنظیمات و سیاست‌های همان سرویس است.
+    </p>
+  </div>
+</section>
+
+<section id="search-info">
+  <div class="panel">
+    <h2 class="section-heading">🔍 پیدا کردن سایت در گوگل</h2>
+    <p class="muted">
+      این سایت عنوان، توضیحات، لینک اصلی و اطلاعات ساختاریافتهٔ پایه دارد.
+      برای پیگیری ثبت سایت، از Google Search Console استفاده کن.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="https://search.google.com/search-console/"
+        target="_blank" rel="noopener noreferrer">Google Search Console</a>
+      <a class="btn" href="https://www.google.com/search?q=site%3Aneon-portfolio-7vhj.onrender.com"
+        target="_blank" rel="noopener noreferrer">بررسی نتایج گوگل</a>
+    </div>
+    <p class="notice">
+      این پیوندها ابزارهای خارجی هستند. ثبت سایت و نمایش آن در نتایج تضمین نمی‌شود.
+    </p>
+  </div>
+</section>
+
 </main>
 
 <footer>
-  <p>Masih Hackring © فروشگاه خدمات دیجیتال</p>
-  <p><a href="#contact">تماس با ما</a> · <a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">تلگرام</a></p>
+  <div class="brand">MASIH HACKRING</div>
+  <p>فروشگاه خدمات دیجیتال و برنامه‌نویسی</p>
+  <p><a href="#top">خانه</a> · <a href="#services">خدمات</a> · <a href="#contact">تماس با ما</a> · <a href="#rules">قوانین</a></p>
+  <p>© Masih Hackring — تمامی حقوق محفوظ است.</p>
+  <a class="back-top" href="#top">↑ بازگشت به بالای صفحه</a>
 </footer>
 
 <script>
-const groups=[
-{name:"طراحی سایت",icon:"🌐",items:[
-"طراحی سایت شخصی","طراحی سایت شرکتی","طراحی فروشگاه اینترنتی","طراحی صفحه فرود","طراحی سایت نمونه‌کار","طراحی سایت معرفی خدمات","طراحی صفحه تماس با ما","طراحی سایت واکنش‌گرا","بازطراحی ظاهر سایت","رفع ایرادهای ظاهری سایت"]},
-{name:"برنامه‌نویسی",icon:"💻",items:[
-"نوشتن کد پایتون","ساخت اسکریپت ساده","رفع خطای کد پایتون","بررسی و مرتب‌سازی کد","ساخت ابزار محاسباتی","تبدیل فایل‌های متنی","پردازش داده‌های ساده","ساخت ابزار خودکارسازی","توضیح کد و توابع","کمک به بهینه‌سازی کد"]},
-{name:"ربات تلگرام",icon:"🤖",items:[
-"ساخت ربات تلگرام ساده","ساخت ربات پاسخ‌گوی خودکار","ساخت ربات دکمه‌ای","ساخت منوی ربات","ساخت ربات اطلاع‌رسانی","ساخت ربات پرسش‌وپاسخ","افزودن دستور به ربات","رفع خطای ربات پایتون","تنظیم پیام خوشامدگویی","راهنمای انتشار ربات"]},
-{name:"گرافیک و برند",icon:"🎨",items:[
-"طراحی لوگوی ساده","طراحی بنر تبلیغاتی","طراحی عکس پروفایل","طراحی کاور شبکه اجتماعی","طراحی پوستر دیجیتال","انتخاب رنگ برند","طراحی کارت معرفی دیجیتال","طراحی بنر نئونی","طراحی تصویر هدر سایت","اصلاح طرح گرافیکی"]},
-{name:"محتوا و متن",icon:"✍️",items:[
-"نوشتن متن معرفی","نوشتن بیوی شبکه اجتماعی","نوشتن توضیحات محصول","نوشتن متن تبلیغاتی","ایده‌پردازی برای محتوا","ویرایش متن فارسی","بازنویسی متن ساده","نوشتن پرسش‌های متداول","تهیه متن راهنمای کاربر","نوشتن معرفی پروژه"]},
-{name:"ابزار و اتوماسیون",icon:"⚙️",items:[
-"ساخت ابزار تغییر متن","ساخت ابزار شمارش","ساخت تولیدکننده رمز امن","ساخت ابزار مدیریت فهرست","ساخت تبدیل‌گر واحدها","ساخت ابزار مرتب‌سازی متن","ساخت فرم ثبت اطلاعات","خودکارسازی کار تکراری","ساخت ابزار بررسی فایل","ساخت ابزار زمان‌بندی ساده"]},
-{name:"مشاوره و آموزش",icon:"📚",items:[
-"آموزش مقدماتی HTML","آموزش مقدماتی CSS","آموزش مقدماتی پایتون","آموزش ساخت صفحه وب","راهنمای GitHub","راهنمای انتشار سایت","راهنمای رفع خطای کد","بررسی ساختار پروژه","راهنمای طراحی رابط کاربری","مشاوره شروع پروژه دیجیتال"]},
-{name:"خدمات تکمیلی",icon:"🚀",items:[
-"ساخت صفحه لینک‌های شخصی","ساخت صفحه معرفی پروژه","ساخت صفحه پرسش‌وپاسخ","ساخت صفحه قوانین سایت","ساخت صفحه خدمات","ساخت قالب کارت دیجیتال","ساخت داشبورد نمایشی","ساخت صفحه وضعیت پروژه","بهبود نمایش موبایل","بررسی اولیه تجربه کاربری"]}
+"use strict";
+
+const groups = [
+  {
+    name: "طراحی سایت",
+    icon: "🌐",
+    items: [
+      "طراحی سایت شخصی",
+      "طراحی سایت شرکتی",
+      "طراحی فروشگاه اینترنتی",
+      "طراحی صفحه فرود",
+      "طراحی سایت نمونه‌کار",
+      "طراحی سایت معرفی خدمات",
+      "طراحی صفحه تماس با ما",
+      "طراحی سایت واکنش‌گرا",
+      "بازطراحی ظاهر سایت",
+      "رفع ایرادهای ظاهری سایت"
+    ]
+  },
+  {
+    name: "برنامه‌نویسی",
+    icon: "💻",
+    items: [
+      "نوشتن کد پایتون",
+      "ساخت اسکریپت ساده",
+      "رفع خطای کد پایتون",
+      "بررسی و مرتب‌سازی کد",
+      "ساخت ابزار محاسباتی",
+      "تبدیل فایل‌های متنی",
+      "پردازش داده‌های ساده",
+      "ساخت ابزار خودکارسازی",
+      "توضیح کد و توابع",
+      "کمک به بهینه‌سازی کد"
+    ]
+  },
+  {
+    name: "ربات تلگرام",
+    icon: "🤖",
+    items: [
+      "ساخت ربات تلگرام ساده",
+      "ساخت ربات پاسخ‌گوی خودکار",
+      "ساخت ربات دکمه‌ای",
+      "ساخت منوی ربات",
+      "ساخت ربات اطلاع‌رسانی",
+      "ساخت ربات پرسش‌وپاسخ",
+      "افزودن دستور به ربات",
+      "رفع خطای ربات پایتون",
+      "تنظیم پیام خوشامدگویی",
+      "راهنمای انتشار ربات"
+    ]
+  },
+  {
+    name: "گرافیک و برند",
+    icon: "🎨",
+    items: [
+      "طراحی لوگوی ساده",
+      "طراحی بنر تبلیغاتی",
+      "طراحی عکس پروفایل",
+      "طراحی کاور شبکه اجتماعی",
+      "طراحی پوستر دیجیتال",
+      "انتخاب رنگ برند",
+      "طراحی کارت معرفی دیجیتال",
+      "طراحی بنر نئونی",
+      "طراحی تصویر هدر سایت",
+      "اصلاح طرح گرافیکی"
+    ]
+  },
+  {
+    name: "محتوا و متن",
+    icon: "✍️",
+    items: [
+      "نوشتن متن معرفی",
+      "نوشتن بیوی شبکه اجتماعی",
+      "نوشتن توضیحات محصول",
+      "نوشتن متن تبلیغاتی",
+      "ایده‌پردازی برای محتوا",
+      "ویرایش متن فارسی",
+      "بازنویسی متن ساده",
+      "نوشتن پرسش‌های متداول",
+      "تهیه متن راهنمای کاربر",
+      "نوشتن معرفی پروژه"
+    ]
+  },
+  {
+    name: "ابزار و اتوماسیون",
+    icon: "⚙️",
+    items: [
+      "ساخت ابزار تغییر متن",
+      "ساخت ابزار شمارش",
+      "ساخت تولیدکننده رمز امن",
+      "ساخت ابزار مدیریت فهرست",
+      "ساخت تبدیل‌گر واحدها",
+      "ساخت ابزار مرتب‌سازی متن",
+      "ساخت فرم ثبت اطلاعات",
+      "خودکارسازی کار تکراری",
+      "ساخت ابزار بررسی فایل",
+      "ساخت ابزار زمان‌بندی ساده"
+    ]
+  },
+  {
+    name: "مشاوره و آموزش",
+    icon: "📚",
+    items: [
+      "آموزش مقدماتی HTML",
+      "آموزش مقدماتی CSS",
+      "آموزش مقدماتی پایتون",
+      "آموزش ساخت صفحه وب",
+      "راهنمای GitHub",
+      "راهنمای انتشار سایت",
+      "راهنمای رفع خطای کد",
+      "بررسی ساختار پروژه",
+      "راهنمای طراحی رابط کاربری",
+      "مشاوره شروع پروژه دیجیتال"
+    ]
+  },
+  {
+    name: "خدمات تکمیلی",
+    icon: "🚀",
+    items: [
+      "ساخت صفحه لینک‌های شخصی",
+      "ساخت صفحه معرفی پروژه",
+      "ساخت صفحه پرسش‌وپاسخ",
+      "ساخت صفحه قوانین سایت",
+      "ساخت صفحه خدمات",
+      "ساخت قالب کارت دیجیتال",
+      "ساخت داشبورد نمایشی",
+      "ساخت صفحه وضعیت پروژه",
+      "بهبود نمایش موبایل",
+      "بررسی اولیه تجربه کاربری"
+    ]
+  }
 ];
 
-const all=groups.flatMap((g,gi)=>g.items.map((name,si)=>({
-name,category:g.name,icon:g.icon,id:gi*10+si+1
-})));
+const services = groups.flatMap((group, groupIndex) =>
+  group.items.map((name, itemIndex) => ({
+    id: groupIndex * 10 + itemIndex + 1,
+    name,
+    category: group.name,
+    icon: group.icon
+  }))
+);
 
-const grid=document.getElementById("servicesGrid");
-const cats=document.getElementById("categories");
-const search=document.getElementById("search");
-const count=document.getElementById("count");
-const empty=document.getElementById("empty");
-let active="همه";
+const searchInput = document.getElementById("search");
+const categoriesElement = document.getElementById("categories");
+const gridElement = document.getElementById("servicesGrid");
+const countElement = document.getElementById("count");
+const emptyElement = document.getElementById("empty");
 
-["همه",...groups.map(g=>g.name)].forEach(name=>{
- const b=document.createElement("button");
- b.type="button";
- b.className="cat"+(name==="همه"?" active":"");
- b.textContent=name==="همه"?"✨ همه خدمات":name;
- b.addEventListener("click",()=>{
-  active=name;
-  cats.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===b));
-  render();
- });
- cats.appendChild(b);
-});
+let activeCategory = "همه";
 
-function render(){
- const q=search.value.trim().toLocaleLowerCase("fa");
- const list=all.filter(s=>
-  (active==="همه"||s.category===active)&&
-  (s.name.toLocaleLowerCase("fa").includes(q)||s.category.toLocaleLowerCase("fa").includes(q))
- );
- grid.replaceChildren();
- list.forEach(s=>{
-  const card=document.createElement("article");
-  card.className="card";
-  const num=document.createElement("div");
-  num.className="num";
-  num.textContent=String(s.id).padStart(2,"0")+" · "+s.category;
-  const title=document.createElement("h3");
-  title.textContent=s.icon+" "+s.name;
-  const desc=document.createElement("p");
-  desc.textContent="برای دریافت جزئیات، هزینه و زمان انجام پیام بده.";
-  const price=document.createElement("div");
-  price.className="price";
-  price.textContent="قیمت: توافقی";
-  const order=document.createElement("a");
-  order.className="order";
-  order.textContent="سفارش مستقیم در تلگرام ↗";
-  const message="سلام مسیح هکرینگ، برای سفارش این خدمت پیام می‌دهم:\nخدمت: "+s.name+"\nدسته: "+s.category+"\nلطفاً هزینه و زمان انجام را اعلام کن.";
-  order.href="https://t.me/Ma3ih01?text="+encodeURIComponent(message);
-  order.target="_blank";
-  order.rel="noopener noreferrer";
-  card.append(num,title,desc,price,order);
-  grid.appendChild(card);
- });
- count.textContent="نمایش "+list.length+" خدمت از "+all.length+" خدمت";
- empty.style.display=list.length?"none":"block";
+function createCategories() {
+  const names = ["همه", ...groups.map(group => group.name)];
+
+  names.forEach(name => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className =
+      "category-button" + (name === "همه" ? " active" : "");
+    button.textContent = name === "همه" ? "✨ همه خدمات" : name;
+
+    button.addEventListener("click", () => {
+      activeCategory = name;
+
+      categoriesElement
+        .querySelectorAll("button")
+        .forEach(item => {
+          item.classList.toggle("active", item === button);
+        });
+
+      renderServices();
+    });
+
+    categoriesElement.appendChild(button);
+  });
 }
-search.addEventListener("input",render);
-render();
+
+function createServiceCard(service) {
+  const card = document.createElement("article");
+  card.className = "service-card";
+
+  const meta = document.createElement("div");
+  meta.className = "service-meta";
+  meta.textContent =
+    String(service.id).padStart(2, "0") +
+    " · " + service.category;
+
+  const title = document.createElement("h3");
+  title.textContent = service.icon + " " + service.name;
+
+  const description = document.createElement("p");
+  description.textContent =
+    "برای بررسی جزئیات، هزینه و زمان انجام این خدمت پیام بده.";
+
+  const price = document.createElement("div");
+  price.className = "service-price";
+  price.textContent = "قیمت: توافقی";
+
+  const order = document.createElement("a");
+  order.className = "order-button";
+  order.textContent = "سفارش مستقیم در تلگرام ↗";
+
+  const message =
+    "سلام مسیح هکرینگ، برای سفارش این خدمت پیام می‌دهم:\n" +
+    "خدمت: " + service.name + "\n" +
+    "دسته‌بندی: " + service.category + "\n" +
+    "لطفاً هزینه و زمان انجام را اعلام کن.";
+
+  order.href =
+    "https://t.me/Ma3ih01?text=" + encodeURIComponent(message);
+  order.target = "_blank";
+  order.rel = "noopener noreferrer";
+  order.setAttribute(
+    "aria-label",
+    "سفارش " + service.name + " در تلگرام"
+  );
+
+  card.append(meta, title, description, price, order);
+  return card;
+}
+
+function renderServices() {
+  const query = searchInput.value
+    .trim()
+    .toLocaleLowerCase("fa");
+
+  const filtered = services.filter(service => {
+    const matchesCategory =
+      activeCategory === "همه" ||
+      service.category === activeCategory;
+
+    const matchesSearch =
+      service.name.toLocaleLowerCase("fa").includes(query) ||
+      service.category.toLocaleLowerCase("fa").includes(query);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  const fragment = document.createDocumentFragment();
+
+  filtered.forEach(service => {
+    fragment.appendChild(createServiceCard(service));
+  });
+
+  gridElement.replaceChildren(fragment);
+
+  countElement.textContent =
+    "نمایش " + filtered.length + " خدمت از " +
+    services.length + " خدمت";
+
+  emptyElement.style.display =
+    filtered.length === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", renderServices);
+
+createCategories();
+renderServices();
+
+/*
+بازبینی ساده هنگام اجرا:
+اگر فهرست خدمات تغییر کرد، تعداد کل را بررسی کن.
+*/
+console.assert(
+  services.length === 80,
+  "تعداد خدمات باید ۸۰ مورد باشد."
+);
 </script>
 </body>
 </html>
