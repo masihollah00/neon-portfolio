@@ -3,116 +3,143 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مسیح مختاری | Masih Hackring</title>
-<meta name="description" content="وب‌سایت رسمی مسیح مختاری، Masih Hackring؛ برنامه‌نویسی پایتون، ساخت ربات تلگرام، طراحی سایت و آموزش امنیت سایبری.">
-<meta name="keywords" content="مسیح, مسیح مختاری, مسیح هکرینگ, اسطوره تلگرام, Masih Hackring, پایتون, ربات تلگرام">
-<meta name="author" content="Masih Mokhtari">
-<meta name="theme-color" content="#080816">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080817">
+<title>Masih Hackring | فروشگاه نئونی</title>
 <style>
+:root{--bg:#080817;--panel:#111128;--cyan:#00f5ff;--pink:#ff35d3;--purple:#8c52ff;--text:#f5f5ff;--muted:#b7b7d2}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#080816;color:#f5f5ff;font-family:Tahoma,Arial,sans-serif;line-height:2}
-header{position:sticky;top:0;background:#080816ee;border-bottom:1px solid #00f5ff55;padding:12px;z-index:2}
-nav{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-a{color:#00f5ff;text-decoration:none}
-nav div{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
-.container{width:90%;max-width:1000px;margin:auto}
-.hero{text-align:center;padding:90px 0 70px}
-.tag{color:#00f5ff;border:1px solid #00f5ff55;border-radius:25px;padding:5px 15px;font-size:13px}
-h1{font-size:clamp(32px,7vw,58px);line-height:1.5}
-.glow{color:#00f5ff;text-shadow:0 0 18px #00f5ff88}
-.purple{color:#c16aff}
-p{color:#c5c5dc}
-.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:24px}
-.btn{display:inline-block;padding:8px 20px;border:1px solid #00f5ff;border-radius:9px}
-.btn.primary{background:#00f5ff;color:#080816;font-weight:bold}
-section{padding:40px 0}
-h2{text-align:center;font-size:29px}
-.desc{text-align:center;margin-bottom:25px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:linear-gradient(140deg,#17172f,#101020);border:1px solid #00f5ff44;border-radius:15px;padding:20px;transition:.2s}
-.card:hover{border-color:#c16aff;transform:translateY(-4px)}
-.card h3{color:#00f5ff;margin-top:0}
-.card p{font-size:14px}
-.skills{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
-.skills span{border:1px solid #c16aff77;color:#e4caff;border-radius:8px;padding:5px 12px}
-.contact{text-align:center;background:#15132b;border:1px solid #00f5ff55;border-radius:18px;padding:28px}
-footer{text-align:center;border-top:1px solid #00f5ff33;padding:20px;color:#aaa;font-size:13px}
-@media(max-width:500px){nav{justify-content:center}.hero{padding-top:60px}}
+body{margin:0;background:radial-gradient(ellipse at top,#191044 0%,var(--bg) 58%);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
+header{text-align:center;padding:45px 16px 28px}
+.logo{font-size:clamp(28px,7vw,48px);font-weight:900;color:var(--cyan);text-shadow:0 0 12px #00f5ff,0 0 30px #00f5ff66}
+header p{color:var(--muted);line-height:2;margin:12px auto;max-width:600px}
+.pill{display:inline-block;border:1px solid var(--pink);color:#ff8ce8;padding:8px 15px;border-radius:30px;margin-top:8px;box-shadow:0 0 14px #ff35d333}
+.wrap{max-width:1150px;margin:auto;padding:12px 16px 40px}
+.tools{position:sticky;top:0;z-index:5;background:#080817ed;padding:12px 0;backdrop-filter:blur(12px)}
+input{width:100%;padding:15px;border-radius:12px;background:#111128;border:1px solid #41416c;color:white;font:inherit;outline:none}
+input:focus{border-color:var(--cyan);box-shadow:0 0 12px #00f5ff33}
+.categories{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
+.cat{white-space:nowrap;border:1px solid #41416c;border-radius:22px;padding:10px 14px;background:#111128;color:white;font:inherit;cursor:pointer}
+.cat.active,.cat:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px #00f5ff33}
+.info{color:var(--muted);font-size:13px;margin:10px 2px 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}
+.card{background:linear-gradient(145deg,#15152f,#0d0d20);border:1px solid #33335b;border-radius:16px;padding:18px;transition:.2s;display:flex;flex-direction:column;min-height:190px}
+.card:hover{transform:translateY(-3px);border-color:var(--purple);box-shadow:0 0 18px #8c52ff25}
+.num{color:var(--cyan);font-size:12px}
+.card h3{font-size:16px;line-height:1.8;margin:10px 0}
+.card p{font-size:13px;color:var(--muted);line-height:1.9;margin:0 0 15px;flex:1}
+.price{color:#ff8ce8;font-size:13px;margin-bottom:14px}
+.order{display:block;text-align:center;text-decoration:none;background:linear-gradient(90deg,#8c52ff,#e12bc8);color:white;padding:12px;border-radius:10px;font-weight:bold}
+.order:hover{filter:brightness(1.15)}
+.empty{display:none;text-align:center;padding:35px;color:var(--muted)}
+footer{text-align:center;padding:30px 15px;color:var(--muted);font-size:13px;line-height:2;border-top:1px solid #282844}
+footer a{color:var(--cyan);text-decoration:none}
 </style>
 </head>
 <body>
 <header>
-<nav>
-<strong class="glow">MASIH HACKRING</strong>
-<div>
-<a href="#about">درباره من</a>
-<a href="#projects">پروژه‌ها</a>
-<a href="#skills">مهارت‌ها</a>
-<a href="#contact">ارتباط</a>
-</div>
-</nav>
+  <div class="logo">MASIH HACKRING</div>
+  <p>فروشگاه خدمات دیجیتال و برنامه‌نویسی<br>انتخاب کن، جزئیات سفارش رو در تلگرام بفرست و هماهنگ کن.</p>
+  <span class="pill">⚡ ۸۰ خدمت در ۸ دسته</span>
 </header>
 
-<main>
-<div class="hero container">
-<span class="tag">برنامه‌نویسی | تکنولوژی | خلاقیت</span>
-<h1>کدنویس <span class="glow">مسیح مختاری</span></h1>
-<h2 class="purple">Masih Hackring</h2>
-<p>به دنیای برنامه‌نویسی و پروژه‌های خفن من خوش اومدی!</p>
-<p>ساخت ربات، طراحی سایت، برنامه‌نویسی پایتون و آموزش ابزارهای تکنولوژی.</p>
-<div class="actions">
-<a class="btn primary" href="#projects">مشاهده پروژه‌ها</a>
-<a class="btn" href="https://t.me/Ma3ih01" target="_blank" rel="noopener">ارتباط با من</a>
-</div>
-</div>
-
-<section id="about" class="container">
-<h2>درباره <span class="glow">من</span></h2>
-<p class="desc">من مسیح مختاری هستم؛ علاقه‌مند به برنامه‌نویسی، ساخت ابزار و یادگیری امنیت سایبری.</p>
-</section>
-
-<section id="projects" class="container">
-<h2>پروژه‌ها و <span class="glow">فعالیت‌ها</span></h2>
-<p class="desc">ایده‌ها رو به پروژه‌های واقعی تبدیل می‌کنیم.</p>
-<div class="grid">
-<article class="card"><h3>🤖 ربات تلگرام</h3><p>ساخت ربات‌های کاربردی، مدیریت گروه و خودکارسازی کارها.</p></article>
-<article class="card"><h3>🌐 طراحی سایت</h3><p>ساخت سایت شخصی، صفحات واکنش‌گرا و طراحی نئونی.</p></article>
-<article class="card"><h3>🐍 برنامه‌نویسی Python</h3><p>اسکریپت‌ها و ابزارهای کاربردی با پایتون.</p></article>
-<article class="card"><h3>📱 آموزش AIDE</h3><p>آشنایی با ساخت برنامه‌های اندرویدی و ابزارهای توسعه.</p></article>
-<article class="card"><h3>⌨️ کیبورد و APK Editor</h3><p>شخصی‌سازی رابط کاربری و ویرایش برنامه‌ها در پروژه‌های مجاز.</p></article>
-<article class="card"><h3>🛠️ ترموکس</h3><p>آموزش دستورات، محیط لینوکس و ابزارهای برنامه‌نویسی.</p></article>
-<article class="card"><h3>🛡️ امنیت سایبری</h3><p>آموزش امنیت، دفاع از سیستم‌ها و تمرین در محیط آزمایشگاهی.</p></article>
-<article class="card"><h3>🎵 ساخت اپلیکیشن</h3><p>ایده‌پردازی و ساخت ابزارهای موبایل و موزیک‌پلیر.</p></article>
-</div>
-</section>
-
-<section id="skills" class="container">
-<h2>مهارت‌ها و <span class="glow">ابزارها</span></h2>
-<div class="skills">
-<span>Python</span><span>HTML</span><span>CSS</span>
-<span>Telegram Bot</span><span>AIDE</span><span>Termux</span>
-<span>APK Editor</span><span>Web Design</span><span>Cybersecurity</span>
-</div>
-</section>
-
-<section id="contact" class="container">
-<div class="contact">
-<h2>ارتباط با <span class="glow">مسیح</span></h2>
-<p>برای صحبت درباره پروژه‌ها و برنامه‌نویسی پیام بده.</p>
-<p>آیدی تلگرام: <strong dir="ltr">@Ma3ih01</strong></p>
-<p>شماره تماس: <strong dir="ltr">09398039515</strong></p>
-<div class="actions">
-<a class="btn primary" href="https://t.me/Ma3ih01" target="_blank" rel="noopener">✈️ پیام در تلگرام</a>
-<a class="btn" href="tel:+989398039515">📞 تماس تلفنی</a>
-</div>
-<p>فعالیت‌های امنیتی فقط با اجازه صاحب سیستم انجام می‌شوند.</p>
-</div>
-</section>
+<main class="wrap">
+  <div class="tools">
+    <input id="search" type="search" placeholder="🔎 جست‌وجوی خدمت..." aria-label="جست‌وجوی خدمات">
+    <div class="categories" id="categories"></div>
+  </div>
+  <div class="info" id="count">در حال نمایش خدمات...</div>
+  <section class="grid" id="services"></section>
+  <div class="empty" id="empty">خدمتی با این عبارت پیدا نشد.</div>
 </main>
 
-<footer>ساخته‌شده با 💜 توسط <span class="glow">Masih Hackring</span> | © <span id="year"></span></footer>
-<script>document.getElementById("year").textContent=new Date().getFullYear()</script>
+<footer>
+  <div>طراحی نئونی | Masih Hackring</div>
+  <div>قیمت و زمان انجام هر خدمت قبل از شروع در تلگرام هماهنگ می‌شود.</div>
+  <div>ارتباط و سفارش: <a href="https://t.me/Ma3ih01" target="_blank" rel="noopener">@Ma3ih01</a></div>
+</footer>
+
+<script>
+const groups = [
+{ name:"طراحی سایت", icon:"🌐", items:[
+"طراحی سایت شخصی","طراحی سایت شرکتی","طراحی فروشگاه اینترنتی","طراحی صفحه فرود","طراحی سایت نمونه‌کار","طراحی سایت معرفی خدمات","طراحی صفحه تماس با ما","طراحی سایت واکنش‌گرا","بازطراحی ظاهر سایت","رفع ایرادهای ظاهری سایت"]},
+{ name:"برنامه‌نویسی", icon:"💻", items:[
+"نوشتن کد پایتون","ساخت اسکریپت ساده","رفع خطای کد پایتون","بررسی و مرتب‌سازی کد","ساخت ابزار محاسباتی","تبدیل فایل‌های متنی","پردازش داده‌های ساده","ساخت ابزار خودکارسازی","توضیح کد و توابع","کمک به بهینه‌سازی کد"]},
+{ name:"ربات تلگرام", icon:"🤖", items:[
+"ساخت ربات تلگرام ساده","ساخت ربات پاسخ‌گوی خودکار","ساخت ربات دکمه‌ای","ساخت منوی ربات","ساخت ربات اطلاع‌رسانی","ساخت ربات پرسش‌وپاسخ","افزودن دستور به ربات","رفع خطای ربات پایتون","تنظیم پیام خوشامدگویی","راهنمای انتشار ربات"]},
+{ name:"گرافیک و برند", icon:"🎨", items:[
+"طراحی لوگوی ساده","طراحی بنر تبلیغاتی","طراحی عکس پروفایل","طراحی کاور شبکه اجتماعی","طراحی پوستر دیجیتال","انتخاب رنگ برند","طراحی کارت معرفی دیجیتال","طراحی بنر نئونی","طراحی تصویر هدر سایت","اصلاح طرح گرافیکی"]},
+{ name:"محتوا و متن", icon:"✍️", items:[
+"نوشتن متن معرفی","نوشتن بیوی شبکه اجتماعی","نوشتن توضیحات محصول","نوشتن متن تبلیغاتی","ایده‌پردازی برای محتوا","ویرایش متن فارسی","بازنویسی متن ساده","نوشتن پرسش‌های متداول","تهیه متن راهنمای کاربر","نوشتن معرفی پروژه"]},
+{ name:"ابزار و اتوماسیون", icon:"⚙️", items:[
+"ساخت ابزار تغییر متن","ساخت ابزار شمارش","ساخت تولیدکننده رمز امن","ساخت ابزار مدیریت فهرست","ساخت تبدیل‌گر واحدها","ساخت ابزار مرتب‌سازی متن","ساخت فرم ثبت اطلاعات","خودکارسازی کار تکراری","ساخت ابزار بررسی فایل","ساخت ابزار زمان‌بندی ساده"]},
+{ name:"مشاوره و آموزش", icon:"📚", items:[
+"آموزش مقدماتی HTML","آموزش مقدماتی CSS","آموزش مقدماتی پایتون","آموزش ساخت صفحه وب","راهنمای GitHub","راهنمای انتشار سایت","راهنمای رفع خطای کد","بررسی ساختار پروژه","راهنمای طراحی رابط کاربری","مشاوره شروع پروژه دیجیتال"]},
+{ name:"خدمات تکمیلی", icon:"🚀", items:[
+"ساخت صفحه لینک‌های شخصی","ساخت صفحه معرفی پروژه","ساخت صفحه پرسش‌وپاسخ","ساخت صفحه قوانین سایت","ساخت صفحه خدمات","ساخت قالب کارت دیجیتال","ساخت داشبورد نمایشی","ساخت صفحه وضعیت پروژه","بهبود نمایش موبایل","بررسی اولیه تجربه کاربری"]}
+];
+
+const all = groups.flatMap((g,gi)=>g.items.map((name,si)=>({
+name, category:g.name, icon:g.icon, id:gi*10+si+1
+})));
+
+let active = "همه";
+const cats = document.getElementById("categories");
+const grid = document.getElementById("services");
+const search = document.getElementById("search");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+
+["همه",...groups.map(g=>g.name)].forEach(name=>{
+  const b=document.createElement("button");
+  b.className="cat"+(name==="همه"?" active":"");
+  b.textContent=name==="همه"?"✨ همه خدمات":name;
+  b.type="button";
+  b.onclick=()=>{
+    active=name;
+    document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("active",x===b));
+    render();
+  };
+  cats.appendChild(b);
+});
+
+function render(){
+  const q=search.value.trim().toLocaleLowerCase("fa");
+  const filtered=all.filter(s=>
+    (active==="همه"||s.category===active) &&
+    (s.name.toLocaleLowerCase("fa").includes(q)||s.category.toLocaleLowerCase("fa").includes(q))
+  );
+  grid.replaceChildren();
+  filtered.forEach(s=>{
+    const card=document.createElement("article");
+    card.className="card";
+    const num=document.createElement("div");
+    num.className="num";
+    num.textContent=String(s.id).padStart(2,"0")+" · "+s.category;
+    const title=document.createElement("h3");
+    title.textContent=s.icon+" "+s.name;
+    const desc=document.createElement("p");
+    desc.textContent="برای جزئیات، هزینه و زمان انجام این خدمت پیام بده.";
+    const price=document.createElement("div");
+    price.className="price";
+    price.textContent="قیمت: توافقی";
+    const link=document.createElement("a");
+    link.className="order";
+    link.textContent="سفارش در تلگرام ↗";
+    link.href="https://t.me/Ma3ih01?text="+encodeURIComponent(
+      "سلام مسیح هکرینگ، برای این خدمت سفارش دارم:\nخدمت: "+s.name+
+      "\nدسته: "+s.category+"\nلطفاً قیمت و زمان انجام را اعلام کن."
+    );
+    link.target="_blank";
+    link.rel="noopener";
+    card.append(num,title,desc,price,link);
+    grid.appendChild(card);
+  });
+  count.textContent=filtered.length+" خدمت از "+all.length+" خدمت";
+  empty.style.display=filtered.length?"none":"block";
+}
+search.addEventListener("input",render);
+render();
+</script>
 </body>
 </html>
