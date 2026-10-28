@@ -35,17 +35,6 @@
     ]
   }
 }
-// ثبت هویت: پیش‌نمایش در همین مرورگر و ارسال درخواست به گفت‌وگوی تلگرام مدیر
-(function(){
- const byId=id=>document.getElementById(id);
- const fields=['identityName','identityUsername','identityBio','identityLink','identityContact'];
- function readIdentity(){return {name:byId('identityName').value.trim(),username:byId('identityUsername').value.trim(),bio:byId('identityBio').value.trim(),link:byId('identityLink').value.trim(),contact:byId('identityContact').value.trim(),photo:byId('identityPhoto').files[0]||null};}
- let localTrackingCode='';
- byId('identityPhoto').addEventListener('change',()=>{const file=byId('identityPhoto').files[0];const img=byId('identityPhotoPreview');if(!file){img.hidden=true;byId('identityAvatar').style.display='grid';return;}if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>5*1024*1024){alert('عکس باید PNG، JPG یا WebP و حداکثر ۵ مگابایت باشد.');byId('identityPhoto').value='';img.hidden=true;return;}const reader=new FileReader();reader.onload=()=>{img.src=reader.result;img.hidden=false;byId('identityAvatar').style.display='none';};reader.readAsDataURL(file);});
- function safeExternalLink(raw){if(!raw)return '';let v=raw.trim();if(/^@[A-Za-z0-9_]{4,}$/.test(v))return 'https://t.me/'+v.slice(1);if(/^https:\/\//i.test(v)){try{const u=new URL(v);if(['t.me','telegram.me','instagram.com','www.instagram.com'].includes(u.hostname.toLowerCase()))return u.href;}catch(e){}}return '';}
- byId('previewIdentity').addEventListener('click',()=>{const d=readIdentity();if(!d.name){alert('لطفاً نام نمایشی را وارد کن.');byId('identityName').focus();return;}byId('identityAvatar').textContent=Array.from(d.name)[0]||'م';if(!d.photo){byId('identityPhotoPreview').hidden=true;byId('identityAvatar').style.display='grid';}byId('previewName').textContent=d.name;byId('previewUsername').textContent=d.username? (d.username.startsWith('@')?d.username:'@'+d.username):'';byId('previewBio').textContent=d.bio;const valid=safeExternalLink(d.link);byId('previewLink').textContent=valid?'لینک ارتباطی: '+valid:(d.link?'لینک واردشده نیاز به بررسی دارد':'');byId('identityPreview').style.display='block';});
- byId('identityForm').addEventListener('submit',event=>{event.preventDefault();const d=readIdentity();if(!d.name||!d.contact){alert('نام نمایشی و راه ارتباطی را وارد کن.');return;}localTrackingCode='MH-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase();const msg=['درخواست بررسی هویت و پروفایل — Masih Hackring','کد پیگیری محلی: '+localTrackingCode,'نام نمایشی: '+d.name,'نام کاربری: '+(d.username||'ثبت نشده'),'بیوگرافی: '+(d.bio||'ثبت نشده'),'لینک: '+(safeExternalLink(d.link)||d.link||'ثبت نشده'),'راه پیگیری: '+d.contact,'عکس پروفایل: '+(d.photo?'انتخاب شده؛ برای مدیر باید جداگانه ارسال شود':'انتخاب نشده'),'درخواست: لطفاً مشخصات را بررسی و نتیجهٔ تأیید یا رد را اعلام کنید.'].join('\n');const url='https://t.me/Ma3ih01?text='+encodeURIComponent(msg);byId('identityResult').style.display='block';byId('identityResult').innerHTML='کد پیگیری موقت: <strong>'+localTrackingCode+'</strong><br>درخواست آماده است. تلگرام را باز کن و پیام را خودت ارسال کن؛ عکس و اطلاعات هنوز در دیتابیس ذخیره نشده‌اند. <p><a href="'+url+'" target="_blank" rel="noopener noreferrer">بازکردن تلگرام و ارسال درخواست ↗</a></p>';window.open(url,'_blank','noopener');});
-})();
 
 </script>
 <style>
@@ -282,22 +271,22 @@ footer{border-top:1px solid #a66bff35;background:linear-gradient(180deg,#080817,
 </section>
 
 <section id="identity-profile" class="identity-tools">
-<h2 class="section-heading">🪪 ثبت درخواست هویت و ساخت پروفایل شخصی</h2>
-<p class="identity-intro">مشخصات را وارد کن تا پیش‌نمایش پروفایل ساخته شود و درخواست بررسی برای مدیر در تلگرام آماده شود.</p>
+<h2 class="section-heading">🪪 ساخت پروفایل عمومی</h2>
+<p class="identity-intro">فرم را ثبت کن تا پروفایلت در فهرست عمومی Masih Hackring نمایش داده شود. فقط اطلاعاتی را وارد کن که مایل به انتشار عمومی آن هستی.</p>
 <form id="identityForm">
 <div class="identity-grid">
 <div class="identity-field"><label for="identityName">نام نمایشی *</label><input id="identityName" maxlength="70" required autocomplete="name" placeholder="مثلاً: Masih Hackring"></div>
 <div class="identity-field"><label for="identityUsername">نام کاربری</label><input id="identityUsername" maxlength="50" placeholder="@username"></div>
-<div class="identity-field full"><label for="identityPhoto">عکس پروفایل خودت</label><input id="identityPhoto" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="identityPhotoHelp"><small id="identityPhotoHelp" class="identity-note">فقط تصویر PNG، JPG یا WebP؛ پیش‌نمایش در همین مرورگر انجام می‌شود.</small></div>
+<div class="identity-field full"><label for="identityPhoto">عکس پروفایل خودت</label><input id="identityPhoto" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="identityPhotoHelp"><small id="identityPhotoHelp" class="identity-note">تصویر PNG، JPG یا WebP تا ۲ مگابایت؛ پس از تنظیم فضای ذخیره‌سازی همراه پروفایل منتشر می‌شود.</small></div>
 <div class="identity-field full"><label for="identityBio">بیوگرافی کوتاه</label><textarea id="identityBio" rows="3" maxlength="350" placeholder="چند خط درباره خودت..."></textarea></div>
 <div class="identity-field"><label for="identityLink">لینک تلگرام یا شبکه اجتماعی</label><input id="identityLink" maxlength="200" placeholder="https://t.me/username یا @username"></div>
-<div class="identity-field"><label for="identityContact">راه ارتباطی برای پیگیری *</label><input id="identityContact" maxlength="100" required placeholder="آیدی تلگرام یا راه تماس"></div>
+<div class="identity-field full"><label><input id="identityConsent" type="checkbox" required> با انتشار عمومی نام، آیدی، بیو، لینک و عکس انتخابی‌ام موافقم.</label></div>
 </div>
-<div class="identity-actions"><button type="button" class="btn btn-primary" id="previewIdentity">پیش‌نمایش پروفایل</button><button type="submit" class="btn">ارسال درخواست به مدیر در تلگرام ↗</button></div>
+<div class="identity-actions"><button type="button" class="btn btn-primary" id="previewIdentity">پیش‌نمایش</button><button type="submit" class="btn">ثبت و انتشار پروفایل</button></div>
 </form>
 <div id="identityResult" class="identity-result" role="status"></div>
-<div id="identityPreview" class="local-profile-preview"><div class="avatar-letter" id="identityAvatar">م</div><img id="identityPhotoPreview" alt="پیش‌نمایش عکس پروفایل" hidden style="width:96px;height:96px;object-fit:cover;border-radius:50%;border:2px solid #00f5ff;margin:0 auto 12px;box-shadow:0 0 22px #00f5ff33"><h3 id="previewName"></h3><p id="previewUsername"></p><p id="previewBio"></p><p id="previewLink"></p><p class="identity-note">پیش‌نمایش محلی است؛ هنوز پروفایل عمومی یا نشان تأییدشده ایجاد نشده است.</p></div>
-<p class="identity-note">مهم: این نسخه فقط پیش‌نمایش را در همین مرورگر می‌سازد و درخواست را از طریق تلگرام آماده می‌کند. ذخیرهٔ دائمی، جست‌وجوی عمومی، لینک مستقل برای هر فرد و نشان تأیید واقعی به بک‌اند و پایگاه داده نیاز دارند. نشان تأیید فقط پس از بررسی مدیر قابل اعطا است.</p>
+<div id="identityPreview" class="local-profile-preview"><div class="avatar-letter" id="identityAvatar">م</div><img id="identityPhotoPreview" alt="پیش‌نمایش عکس پروفایل" hidden style="width:96px;height:96px;object-fit:cover;border-radius:50%;border:2px solid #00f5ff;margin:0 auto 12px;box-shadow:0 0 22px #00f5ff33"><h3 id="previewName"></h3><p id="previewUsername"></p><p id="previewBio"></p><p id="previewLink"></p><p class="identity-note" id="profilePublicCode"></p></div>
+<div class="panel" id="publicProfilesPanel"><h3>🌐 پروفایل‌های عمومی</h3><p class="identity-note">پروفایل‌ها پس از ثبت موفق در پایگاه داده در این قسمت ظاهر می‌شوند.</p><div id="publicProfiles" class="contact-grid" aria-live="polite"></div></div><p class="identity-note">ثبت عمومی خودکار است و به تأیید مدیر نیاز ندارد. برای جلوگیری از انتشار اطلاعات خصوصی، شماره تلفن دریافت یا نمایش داده نمی‌شود.</p>
 </section>
 <section id="about"><div class="panel"><h2 class="section-heading">دربارهٔ Masih Hackring</h2><p class="muted">Masih Hackring یک برند خدمات دیجیتال با تمرکز بر طراحی وب، برنامه‌نویسی، ربات‌های تلگرام، ابزارهای ساده و طراحی گرافیکی است. این صفحه فهرست خدمات قابل درخواست و راه ارتباط برای هماهنگی سفارش را ارائه می‌کند.</p><p class="muted">پیش از شروع هر پروژه، جزئیات نیاز، هزینه، زمان تحویل و محدودهٔ کار از طریق گفت‌وگو مشخص می‌شود. ثبت سفارش به معنی تأیید خودکار قیمت یا شروع فوری پروژه نیست.</p><a class="btn" href="#contact">ارتباط با ما</a></div></section>
 <section id="how-to-order"><h2 class="section-heading">🛒 راهنمای ثبت سفارش</h2><div class="steps"><article class="step"><b>۱. انتخاب خدمت</b><p>از فهرست خدمات مورد دلخواه را پیدا کن.</p></article><article class="step"><b>۲. زدن دکمهٔ سفارش</b><p>لینک تلگرام با متن آمادهٔ همان خدمت باز می‌شود.</p></article><article class="step"><b>۳. ارسال پیام</b><p>پیام را بررسی کن و در گفت‌وگوی تلگرام ارسال کن.</p></article><article class="step"><b>۴. هماهنگی نهایی</b><p>جزئیات، هزینه و زمان انجام را پیش از شروع تأیید کن.</p></article></div></section>
@@ -319,54 +308,135 @@ searchInput.addEventListener("input",filterServices);
 function filterServices(){const q=searchInput.value.trim().toLocaleLowerCase("fa");let shown=0;cards.forEach(card=>{const ok=(activeCategory==="همه"||card.dataset.category===activeCategory)&&card.dataset.search.includes(q);card.hidden=!ok;if(ok)shown++;});count.textContent="نمایش "+shown+" خدمت از "+cards.length+" خدمت";empty.style.display=shown?"none":"block";}
 console.assert(cards.length===80,"Expected exactly 80 static service cards");
 
-// ثبت هویت: پیش‌نمایش در صفحه و بازکردن گفت‌وگوی مستقیم با پیام آماده
-const identityForm=document.getElementById("identityForm");
-const identityResult=document.getElementById("identityResult");
-const identityPreview=document.getElementById("identityPreview");
-const identityValue=id=>document.getElementById(id)?.value.trim()||"";
-function updateIdentityPreview(){
-  const name=identityValue("identityName");
-  const username=identityValue("identityUsername");
-  const bio=identityValue("identityBio");
-  const link=identityValue("identityLink");
-  document.getElementById("identityAvatar").textContent=Array.from(name||"م")[0];
-  document.getElementById("previewName").textContent=name||"نام نمایشی شما";
-  document.getElementById("previewUsername").textContent=username?"آیدی: "+username:"";
-  document.getElementById("previewBio").textContent=bio||"توضیح پروفایل هنوز وارد نشده است.";
-  const linkEl=document.getElementById("previewLink");
-  linkEl.textContent=link?"لینک: "+link:"";
-  identityPreview.style.display="block";
-  identityResult.textContent="پیش‌نمایش ساخته شد؛ این اطلاعات هنوز در سرور ذخیره نشده است.";
+// اتصال مستقیم به Supabase: ثبت فوری پروفایل عمومی و نمایش عکس
+const SUPABASE_URL = "https://pughgsqtrnjzlzppwclp.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_oaDTQeYiV5X81UtnFoD8tw_4kh4PGar";
+const PROFILE_BUCKET = "profile-photos";
+const PROFILE_TABLE = "identity_profiles";
+const identityForm = document.getElementById("identityForm");
+const identityResult = document.getElementById("identityResult");
+const identityPreview = document.getElementById("identityPreview");
+const profilePhotoInput = document.getElementById("identityPhoto");
+const identityValue = id => document.getElementById(id)?.value.trim() || "";
+let selectedPhotoDataUrl = "";
+
+function supabaseHeaders(extra = {}) {
+  return { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY, ...extra };
 }
-document.getElementById("previewIdentity").addEventListener("click",updateIdentityPreview);
-identityForm.addEventListener("submit",event=>{
-  event.preventDefault();
-  if(!identityForm.reportValidity()) return;
-  const name=identityValue("identityName");
-  const username=identityValue("identityUsername");
-  const bio=identityValue("identityBio");
-  const link=identityValue("identityLink");
-  const contact=identityValue("identityContact");
-  const message=[
-    "سلام، درخواست ثبت هویت مجازی در فروشگاه Masih Hackring دارم.",
-    "نام نمایشی: "+name,
-    "نام کاربری: "+(username||"ثبت نشده"),
-    "بیوگرافی: "+(bio||"ثبت نشده"),
-    "لینک عمومی: "+(link||"ثبت نشده"),
-    "راه ارتباطی برای پیگیری: "+contact,
-    "لطفاً درخواست من را بررسی کنید."
-  ].join("\n");
-  identityResult.textContent="گفت‌وگوی تلگرام باز می‌شود؛ پیام آماده را بررسی کن و خودت ارسالش کن. ثبت نهایی خودکار نیست.";
-  const telegramUrl="https://t.me/Ma3ih01?text="+encodeURIComponent(message);
-  const opened=window.open(telegramUrl,"_blank","noopener,noreferrer");
-  if(!opened){
-    identityResult.textContent="اگر تلگرام خودکار باز نشد، روی این لینک بزن و پیام را ارسال کن: ";
-    const fallback=document.createElement("a");
-    fallback.href=telegramUrl; fallback.target="_blank"; fallback.rel="noopener noreferrer";
-    fallback.textContent="باز کردن گفت‌وگوی @Ma3ih01";
-    identityResult.appendChild(fallback);
+function safeProfileLink(raw) {
+  if (!raw) return null;
+  const value = raw.trim();
+  if (/^@[A-Za-z0-9_]{4,}$/.test(value)) return "https://t.me/" + value.slice(1);
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:") return null;
+    if (!["t.me", "telegram.me", "instagram.com", "www.instagram.com"].includes(url.hostname.toLowerCase())) return null;
+    return url.href;
+  } catch (_) { return null; }
+}
+profilePhotoInput?.addEventListener("change", () => {
+  const file = profilePhotoInput.files?.[0];
+  selectedPhotoDataUrl = "";
+  const image = document.getElementById("identityPhotoPreview");
+  if (!file) { image.hidden = true; return; }
+  if (!["image/png", "image/jpeg", "image/webp"].includes(file.type) || file.size > 2 * 1024 * 1024) {
+    profilePhotoInput.value = "";
+    image.hidden = true;
+    identityResult.textContent = "فقط تصویر PNG، JPG یا WebP تا حجم ۲ مگابایت مجاز است.";
+    return;
   }
+  const reader = new FileReader();
+  reader.onload = () => { selectedPhotoDataUrl = String(reader.result || ""); image.src = selectedPhotoDataUrl; image.hidden = false; };
+  reader.readAsDataURL(file);
 });
+function updateIdentityPreview() {
+  const name = identityValue("identityName");
+  const username = identityValue("identityUsername").replace(/^@/, "");
+  const bio = identityValue("identityBio");
+  const link = safeProfileLink(identityValue("identityLink"));
+  document.getElementById("identityAvatar").textContent = Array.from(name || "م")[0];
+  document.getElementById("previewName").textContent = name || "نام نمایشی شما";
+  document.getElementById("previewUsername").textContent = username ? "آیدی: @" + username : "";
+  document.getElementById("previewBio").textContent = bio || "توضیحی وارد نشده است.";
+  document.getElementById("previewLink").textContent = link ? "لینک: " + link : (identityValue("identityLink") ? "لینک واردشده معتبر نیست." : "");
+  identityPreview.style.display = "block";
+}
+document.getElementById("previewIdentity").addEventListener("click", updateIdentityPreview);
+
+async function uploadProfilePhoto(file) {
+  if (!file) return null;
+  const ext = file.type === "image/png" ? "png" : file.type === "image/webp" ? "webp" : "jpg";
+  const path = crypto.randomUUID() + "." + ext;
+  const response = await fetch(SUPABASE_URL + "/storage/v1/object/" + PROFILE_BUCKET + "/" + path, {
+    method: "POST", headers: supabaseHeaders({ "Content-Type": file.type, "x-upsert": "false" }), body: file
+  });
+  if (!response.ok) throw new Error("photo upload failed: " + response.status);
+  return SUPABASE_URL + "/storage/v1/object/public/" + PROFILE_BUCKET + "/" + path;
+}
+async function loadPublicProfiles() {
+  const target = document.getElementById("publicProfiles");
+  if (!target) return;
+  try {
+    const query = "?select=id,display_name,username,bio,social_url,avatar_url,tracking_code,created_at&order=created_at.desc&limit=100";
+    const response = await fetch(SUPABASE_URL + "/rest/v1/" + PROFILE_TABLE + query, { headers: supabaseHeaders() });
+    if (!response.ok) throw new Error("profile list " + response.status);
+    const rows = await response.json();
+    target.replaceChildren();
+    if (!rows.length) { target.textContent = "هنوز پروفایلی ثبت نشده است."; return; }
+    rows.forEach(row => {
+      const card = document.createElement("article"); card.className = "contact-card";
+      if (row.avatar_url) {
+        const img = document.createElement("img"); img.src = row.avatar_url; img.alt = "عکس پروفایل " + row.display_name;
+        img.loading = "lazy"; img.style.cssText = "width:88px;height:88px;object-fit:cover;border-radius:50%;border:1px solid #00f5ff";
+        card.appendChild(img);
+      }
+      const title = document.createElement("h3"); title.textContent = row.display_name; card.appendChild(title);
+      if (row.username) { const p = document.createElement("p"); p.textContent = "آیدی: @" + row.username.replace(/^@/, ""); card.appendChild(p); }
+      if (row.bio) { const p = document.createElement("p"); p.textContent = row.bio; card.appendChild(p); }
+      if (row.social_url) { const a = document.createElement("a"); a.href = row.social_url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "مشاهده لینک"; card.appendChild(a); }
+      const code = document.createElement("small"); code.textContent = "کد پروفایل: " + row.tracking_code; card.appendChild(code);
+      const share = document.createElement("button"); share.type = "button"; share.className = "btn"; share.textContent = "کپی لینک این صفحه";
+      share.addEventListener("click", async () => { try { await navigator.clipboard.writeText(location.href.split("#")[0] + "#identity-profile"); share.textContent = "لینک کپی شد ✓"; } catch (_) { share.textContent = "آدرس صفحه را از نوار مرورگر کپی کن"; } });
+      card.appendChild(share); target.appendChild(card);
+    });
+  } catch (_) {
+    target.textContent = "نمایش پروفایل‌ها فعلاً ممکن نیست؛ جدول و دسترسی‌های Supabase را بررسی کن.";
+  }
+}
+identityForm.addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!identityForm.reportValidity()) return;
+  if (!document.getElementById("identityConsent").checked) {
+    identityResult.textContent = "برای انتشار عمومی باید رضایت خودت را تأیید کنی."; return;
+  }
+  const name = identityValue("identityName");
+  const username = identityValue("identityUsername").replace(/^@/, "");
+  const bio = identityValue("identityBio");
+  const linkRaw = identityValue("identityLink");
+  const socialUrl = safeProfileLink(linkRaw);
+  if (linkRaw && !socialUrl) { identityResult.textContent = "لینک باید آدرس HTTPS معتبر تلگرام یا اینستاگرام یا @username باشد."; return; }
+  const button = identityForm.querySelector('button[type="submit"]');
+  button.disabled = true; identityResult.textContent = "در حال ذخیره و انتشار پروفایل…";
+  try {
+    const file = profilePhotoInput?.files?.[0] || null;
+    const avatarUrl = await uploadProfilePhoto(file);
+    const payload = { display_name: name, username: username || null, bio: bio || null, social_url: socialUrl, avatar_url: avatarUrl };
+    const response = await fetch(SUPABASE_URL + "/rest/v1/" + PROFILE_TABLE + "?select=tracking_code,display_name,username,bio,social_url,avatar_url,created_at", {
+      method: "POST", headers: supabaseHeaders({ "Content-Type": "application/json", Prefer: "return=representation" }), body: JSON.stringify(payload)
+    });
+    if (!response.ok) { const details = await response.text(); throw new Error("profile save " + response.status + ": " + details); }
+    const saved = (await response.json())[0];
+    document.getElementById("profilePublicCode").textContent = "کد پروفایل عمومی: " + saved.tracking_code;
+    identityResult.textContent = "پروفایلت بلافاصله ثبت و عمومی شد! کد پروفایل: " + saved.tracking_code;
+    updateIdentityPreview(); await loadPublicProfiles();
+    identityForm.reset(); selectedPhotoDataUrl = "";
+    const image = document.getElementById("identityPhotoPreview"); image.hidden = true;
+  } catch (error) {
+    console.error("Identity profile registration failed", error);
+    identityResult.textContent = "ثبت انجام نشد. SQL، کلید عمومی، جدول identity_profiles و مخزن عکس profile-photos را بررسی کن؛ اطلاعاتت منتشر نشده است.";
+  } finally { button.disabled = false; }
+});
+loadPublicProfiles();
 
 // انتخاب‌گر سفارش: نام‌های روشن و متن قابل کپی حتی در صورت باز نشدن تلگرام.
 (()=>{
@@ -396,6 +466,33 @@ identityForm.addEventListener("submit",event=>{
  });fillVariants();
 })();
 </script>
+
+<!--
+ نگهداری نسخهٔ یکپارچه Masih Hackring
+ - این فایل، نسخهٔ کامل سایت است؛ فایل کوتاه جداگانه‌ای جایگزین آن نکن.
+ - تعداد خدمات اصلی: ۸۰ کارت؛ اسکریپت جست‌وجو شمار آن‌ها را بررسی می‌کند.
+ - سفارش‌ها با لینک مستقیم تلگرام به @Ma3ih01 هدایت می‌شوند.
+ - قیمت‌ها توافقی‌اند و درگاه پرداخت آنلاین در این نسخه فعال نیست.
+ - ثبت هویت نیازمند اجرای فایل SQL همراه در Supabase است.
+ - جدول مورد استفاده: public.identity_profiles.
+ - مخزن عکس عمومی مورد استفاده: profile-photos.
+ - فقط تصاویر PNG، JPG و WebP تا حجم ۲ مگابایت پذیرفته می‌شوند.
+ - پروفایل عمومی بلافاصله پس از ثبت موفق نمایش داده می‌شود.
+ - انتشار نام، آیدی، بیو، لینک و عکس با رضایت صریح کاربر انجام می‌شود.
+ - شماره تلفن و اطلاعات خصوصی در فرم پروفایل دریافت نمی‌شود.
+ - کلید داخل این فایل باید فقط کلید عمومی publishable باشد.
+ - هرگز کلید service_role یا secret را داخل فایل HTML قرار نده.
+ - کاربران عمومی اجازهٔ ویرایش یا حذف پروفایل‌ها را ندارند.
+ - مالک سایت می‌تواند رکوردها را از داشبورد Supabase حذف کند.
+ - برای حذف عکس یتیم‌شده، فایل آن را از Storage نیز حذف کن.
+ - در صورت خطای ثبت، پیام داخل فرم و Console مرورگر را بررسی کن.
+ - اگر Supabase فعال نباشد، کارت خدمات و لینک سفارش همچنان کار می‌کنند.
+ - لینک‌های خارجی با target blank از noopener/noreferrer استفاده می‌کنند.
+ - داده‌های فرم در متن صفحه با textContent نمایش داده می‌شوند.
+ - قبل از انتشار، در موبایل و دسکتاپ فرم سفارش و فرم هویت را آزمایش کن.
+ - تست واقعی ذخیره‌سازی باید پس از اجرای SQL و انتشار سایت انجام شود.
+ - این توضیحات برای نگهداری کد هستند و هیچ خدمت یا کارت جدیدی اضافه نمی‌کنند.
+-->
 
 <!-- افزوده‌های تکمیلی؛ نسخهٔ اصلی و خدمات قبلی دست‌نخورده باقی مانده‌اند. -->
 <style>
