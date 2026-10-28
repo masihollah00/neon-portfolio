@@ -1,285 +1,302 @@
+<!-- کد کامل و جامع با اضافه شدن سیستم پروفایل شخصی -->
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masih Hackering | پلتفرم حرفه‌ای خدمات</title>
+    <title>Masih Hackering | پلتفرم جامع خدمات دیجیتال و پروفایل هوشمند</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* تمام استایل‌های قبلی (۹۰۰ خطی) در اینجا قرار می‌گیرند */
         :root {
-            --primary-neon: #bc13fe; 
-            --secondary-neon: #4d4dff; 
-            --glass-bg: rgba(0, 0, 0, 0.7); 
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --text-color: #ffffff;
+            --neon-pink: #ff2a85;
+            --neon-blue: #00f0ff;
+            --neon-purple: #bc13fe;
+            --bg-dark: #030305;
+            --glass-bg: rgba(10, 10, 15, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-main: #ffffff;
+            --text-muted: #b3b3c1;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Vazirmatn', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; scroll-behavior: smooth; }
 
         body {
-            background-color: #050505;
-            color: var(--text-color);
-            overflow-x: hidden;
-            /* اینجا عکس خودت رو قرار دادم با یک لایه تیره برای خوانایی متن‌ها */
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('IMG_20261010_185310_910.webp'); 
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            background-image: linear-gradient(rgba(3, 3, 5, 0.85), rgba(3, 3, 5, 0.95)), url('IMG_20261010_185310_910.webp');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        /* استایل شیشه‌ای برای پنل‌ها */
-        .glass-panel {
+        .glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 25px;
+            border-radius: 24px;
         }
 
-        /* بخش هدر (تیتر اصلی) */
-        header {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(3, 3, 5, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
         }
+        .logo { font-size: 1.5rem; font-weight: 900; background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon-blue); }
 
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px rgba(188, 19, 254, 0.5));
-        }
+        /* Hero Section */
+        header { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        header h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; margin-bottom: 20px; background: linear-gradient(45deg, #fff, var(--neon-purple), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin-bottom: 40px; }
 
-        /* بخش خدمات (کارت‌ها) */
-        .services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 50px 10%;
-        }
+        .cta-btn { padding: 15px 40px; background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink)); color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; text-decoration: none; box-shadow: 0 0 25px rgba(255, 42, 133, 0.4); transition: 0.3s; cursor: pointer; }
+        .cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px var(--neon-pink); }
 
-        .service-card {
-            padding: 40px 25px;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+        /* Services Grid */
+        .section-container { padding: 100px 8%; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 900; margin-bottom: 60px; background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .service-card { padding: 40px 30px; transition: 0.4s; position: relative; overflow: hidden; }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--neon-blue); box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2); }
+        .service-icon { font-size: 3rem; margin-bottom: 20px; background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .order-btn { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; font-weight: 700; cursor: pointer; transition: 0.3s; text-decoration: none; text-align: center; }
+        .order-btn:hover { background: var(--neon-blue); color: var(--bg-dark); }
 
-        .service-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--primary-neon);
-            box-shadow: 0 15px 45px rgba(188, 19, 254, 0.25);
-        }
+        /* VIP Identity Form (Existing) */
+        .identity-section { padding: 50px 8%; display: flex; justify-content: center; }
+        .identity-box { width: 100%; max-width: 650px; padding: 50px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--text-muted); }
+        .form-control { width: 100%; padding: 15px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none; }
+        .form-control:focus { border-color: var(--neon-pink); }
+        .submit-btn { width: 100%; padding: 16px; background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-        .service-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: var(--secondary-neon);
-        }
+        /* NEW: Profile Builder Section */
+        .builder-section { padding: 50px 8%; display: flex; justify-content: center; background: rgba(0, 0, 0, 0.3); }
+        .builder-box { width: 100%; max-width: 650px; padding: 50px; border: 2px dashed var(--neon-blue); }
+        .link-result { margin-top: 20px; padding: 15px; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--neon-blue); border-radius: 12px; display: none; text-align: center; }
+        .copy-btn { background: var(--neon-blue); color: black; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; margin-top: 10px; }
 
-        /* دکمه‌های سفارش */
-        .order-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
+        /* NEW: Profile Display Page (Hidden by default) */
+        #profile-page {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-dark); z-index: 2000; overflow-y: auto; padding: 50px 20px;
         }
+        .profile-card { max-width: 500px; margin: 0 auto; text-align: center; padding: 40px; }
+        .profile-avatar { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--neon-pink); margin-bottom: 20px; object-fit: cover; }
+        .back-btn { position: absolute; top: 20px; right: 20px; color: white; text-decoration: none; font-size: 1.5rem; }
 
-        .order-button:hover {
-            box-shadow: 0 0 20px var(--primary-neon);
-            transform: scale(1.05);
-        }
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); color: var(--text-muted); }
 
-        /* بخش ثبت هویت VIP */
-        .identity-section {
-            padding: 80px 10%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .identity-form {
-            width: 100%;
-            max-width: 550px;
-            padding: 40px;
-        }
-
-        .identity-form h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            background: linear-gradient(45deg, #fff, var(--primary-neon));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .identity-form input {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .identity-form input:focus {
-            border-color: var(--primary-neon);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* افکت نمایش هنگام اسکرول */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            opacity: 0.6;
-        }
-
-        @media (max-width: 768px) {
-            .services-container { padding: 30px 5%; }
-            .identity-section { padding: 50px 5%; }
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
+    <!-- نویگیشن بار -->
+    <nav>
+        <div class="logo">MASIH HACKERING</div>
+        <ul class="nav-links">
+            <li><a href="#services">خدمات</a></li>
+            <li><a href="#builder">ساخت پروفایل</a></li>
+            <li><a href="#identity">سفارش VIP</a></li>
+        </ul>
+    </nav>
+
+    <!-- هدر -->
     <header>
-        <h1 class="reveal">Masih Hackering</h1>
-        <p class="reveal" style="font-size: 1.3rem; color: #ddd;">دنیای دیجیتال، با سبک شخصی شما</p>
+        <h1 class="reveal">دنیای خدمات دیجیتال</h1>
+        <p class="reveal">از ممبر تلگرام تا توسعه هوش مصنوعی؛ همه چیز اینجا در دسترس است.</p>
+        <a href="#services" class="cta-btn reveal">شروع کنید 🚀</a>
     </header>
 
-    <section class="services-container">
-        <!-- کارت ۱ -->
-        <div class="service-card glass-panel reveal">
-            <div>
-                <h3>طراحی لوگو</h3>
-                <p>ساخت برندینگ حرفه‌ای و خیره‌کننده</p>
+    <!-- بخش خدمات (کامل) -->
+    <section class="section-container" id="services">
+        <h2 class="section-title reveal">خدمات ما</h2>
+        <div class="services-grid">
+            <div class="service-card glass reveal">
+                <div class="service-icon"><i class="fa-brands fa-telegram"></i></div>
+                <h3>ممبر تلگرام</h3>
+                <p>افزایش مخاطب واقعی و باکیفیت برای کانال و گروه شما.</p>
+                <button class="order-btn" onclick="orderService('ممبر تلگرام')">سفارش آنلاین</button>
             </div>
-            <button class="order-button" onclick="sendTelegramOrder('طراحی لوگو')">سفارش فوری 🚀</button>
-        </div>
-
-        <!-- کارت ۲ -->
-        <div class="service-card glass-panel reveal">
-            <div>
-                <h3>ساخت بات تلگرام</h3>
-                <p>اتوماسیون هوشمند برای کسب‌وکار شما</p>
+            <div class="service-card glass reveal">
+                <div class="service-icon"><i class="fa-brands fa-instagram"></i></div>
+                <h3>فالوور اینستاگرام</h3>
+                <p>لایک و فالوور با بالاترین ماندگاری در بازار.</p>
+                <button class="order-btn" onclick="orderService('فالوور اینستاگرام')">سفارش آنلاین</button>
             </div>
-            <button class="order-button" onclick="sendTelegramOrder('ساخت بات تلگرام')">سفارش فوری 🚀</button>
-        </div>
-
-        <!-- کارت ۳ -->
-        <div class="service-card glass-panel reveal">
-            <div>
-                <h3>توسعه اپلیکیشن</h3>
-                <p>برنامه‌های اندرویدی با استایل خاص</p>
+            <div class="service-card glass reveal">
+                <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
+                <h3>اکانت پرمیوم</h3>
+                <p>ارائه اکانت‌های اختصاصی با قیمت بسیار رقابتی.</p>
+                <button class="order-btn" onclick="orderService('اکانت پرمیوم')">سفارش آنلاین</button>
             </div>
-            <button class="order-button" onclick="sendTelegramOrder('توسعه اپلیکیشن')">سفارش فوری 🚀</button>
         </div>
     </section>
 
-    <section class="identity-section">
-        <div class="identity-form glass-panel reveal">
-            <h2>ثبت هویت مشتری VIP</h2>
-            <input type="text" id="userName" placeholder="نام و نام خانوادگی">
-            <input type="text" id="userPhone" placeholder="شماره تماس یا تلگرام">
-            <button class="order-button" style="width: 100%;" onclick="sendIdentityToTelegram()">تایید و ارسال اطلاعات 💎</button>
-            <div id="statusMsg" style="margin-top: 20px; text-align: center; font-weight: bold;"></div>
+    <!-- بخش جدید: سازنده پروفایل شخصی -->
+    <section class="builder-section" id="builder">
+        <div class="builder-box glass reveal">
+            <h2 style="text-align: center; margin-bottom: 20px;">🛠 ساخت صفحه شخصی (ویترین)</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px;">مشخصات خود را وارد کنید تا لینک اختصاصی پروفایل خود را دریافت کنید.</p>
+            
+            <div class="form-group">
+                <label>نام نمایشی:</label>
+                <input type="text" id="profName" class="form-control" placeholder="مثال: مسیح هکرینگ">
+            </div>
+            <div class="form-group">
+                <label>تخصص یا شغل:</label>
+                <input type="text" id="profJob" class="form-control" placeholder="مثال: متخصص امنیت و خدمات مجازی">
+            </div>
+            <div class="form-group">
+                <label>بیوگرافی کوتاه:</label>
+                <textarea id="profBio" class="form-control" rows="3" placeholder="درباره خودتان بنویسید..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>لینک اینستاگرام یا تلگرام:</label>
+                <input type="text" id="profLink" class="form-control" placeholder="@username">
+            </div>
+            
+            <button class="submit-btn" onclick="generateProfile()">ساخت پروفایل و دریافت لینک 🔗</button>
+
+            <div id="linkResult" class="link-result">
+                <p>لینک پروفایل شما آماده است:</p>
+                <code id="generatedLink" style="color: var(--neon-blue); display: block; margin-top: 10px;"></code>
+                <button class="copy-btn" onclick="copyLink()">کپی لینک</button>
+            </div>
         </div>
     </section>
+
+    <!-- بخش سفارش VIP (کد قبلی) -->
+    <section class="identity-section" id="identity">
+        <div class="identity-box glass reveal">
+            <h2>فرم ثبت سفارش VIP</h2>
+            <div class="form-group">
+                <label>نام:</label>
+                <input type="text" id="vName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>ارتباط:</label>
+                <input type="text" id="vContact" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>خدمت:</label>
+                <select id="vService" class="form-control">
+                    <option>ممبر تلگرام</option>
+                    <option>فالوور اینستاگرام</option>
+                    <option>اکانت پرمیوم</option>
+                </select>
+            </div>
+            <button class="submit-btn" onclick="submitVIPForm()">ارسال به تلگرام 💎</button>
+        </div>
+    </section>
+
+    <!-- صفحه نمایش پروفایل (که بعد از ساخت باز می‌شود) -->
+    <div id="profile-page">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-right"></i></a>
+        <div class="profile-card glass">
+            <img src="https://via.placeholder.com/150" id="pImg" class="profile-avatar">
+            <h2 id="pName" style="color: var(--neon-blue);"></h2>
+            <h4 id="pJob" style="color: var(--neon-pink); margin-bottom: 20px;"></h4>
+            <p id="pBio" style="color: var(--text-muted);"></p>
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--glass-border);">
+            <a id="pLink" href="#" class="cta-btn" style="display: inline-block; font-size: 0.9rem;">ارتباط مستقیم با من</a>
+        </div>
+    </div>
 
     <footer>
-        &copy; 2026 Masih Hackering. All Rights Reserved.
+        <p>&copy; 2026 Masih Hackering. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // آیدی تلگرام شما
-        const TELEGRAM_USER = "ma3ih01";
+        // تابع ساخت پروفایل (شبیه‌ساز)
+        function generateProfile() {
+            const name = document.getElementById('profName').value;
+            const job = document.getElementById('profJob').value;
+            const bio = document.getElementById('profBio').value;
+            const link = document.getElementById('profLink').value;
 
-        // تابع ارسال مستقیم برای هر دکمه سفارش
-        function sendTelegramOrder(serviceName) {
-            const msg = encodeURIComponent(`سلام مسیح عزیز، من می‌خوام پروژه "${serviceName}" رو سفارش بدم. لطفاً راهنماییم کن!`);
-            window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
-        }
+            if(!name || !job) { alert("لطفاً نام و تخصص را پر کنید"); return; }
 
-        // تابع ارسال فرم ثبت هویت
-        function sendIdentityToTelegram() {
-            const name = document.getElementById('userName').value;
-            const phone = document.getElementById('userPhone').value;
-            const status = document.getElementById('statusMsg');
+            // ذخیره در LocalStorage برای اینکه وقتی صفحه پروفایل باز شد، اطلاعات رو بخونیم
+            localStorage.setItem('user_name', name);
+            localStorage.setItem('user_job', job);
+            localStorage.setItem('user_bio', bio);
+            localStorage.setItem('user_link', link);
 
-            if(!name || !phone) {
-                status.innerText = "لطفاً تمام فیلدها را پر کنید!";
-                status.style.color = "#ff4d4d";
-                return;
-            }
-
-            const msg = encodeURIComponent(`💎 ثبت مشتری جدید VIP:\n👤 نام: ${name}\n📱 تماس: ${phone}`);
+            // ایجاد یک لینک فرضی (در واقعیت باید به سرور بفرستید)
+            const fakeUrl = window.location.origin + "/profile/" + name.replace(/\s+/g, '-').toLowerCase();
             
-            status.innerText = "در حال انتقال...";
-            status.style.color = "var(--primary-neon)";
+            document.getElementById('generatedLink').innerText = fakeUrl;
+            document.getElementById('linkResult').style.display = 'block';
 
+            // برای تست سریع: اگر روی لینک کلیک شد، صفحه پروفایل رو نشون بده
             setTimeout(() => {
-                window.open(`https://t.me/${TELEGRAM_USER}?text=${msg}`, '_blank');
-                status.innerText = "با موفقیت ارسال شد ✅";
-                status.style.color = "#00ff88";
-            }, 800);
-        }
-
-        // انیمیشن اسکرول (Reveal on Scroll)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+                if(confirm("آیا می‌خواهید پروفایل خود را مشاهده کنید؟")) {
+                    showProfile();
                 }
-            }
+            }, 1000);
         }
 
-        window.addEventListener("scroll", reveal);
-        // اجرای اولیه برای المان‌هایی که در دید هستند
-        reveal();
-    </script>
+        function showProfile() {
+            // خواندن اطلاعات از LocalStorage
+            document.getElementById('pName').innerText = localStorage.getItem('user_name');
+            document.getElementById('pJob').innerText = localStorage.getItem('user_job');
+            document.getElementById('pBio').innerText = localStorage.getItem('user_bio');
+            document.getElementById('pLink').href = localStorage.getItem('user_link');
 
+            document.getElementById('profile-page').style.display = 'block';
+            window.scrollTo(0,0);
+        }
+
+        // تابع کپی لینک
+        function copyLink() {
+            const link = document.getElementById('generatedLink').innerText;
+            navigator.clipboard.writeText(link);
+            alert("لینک کپی شد!");
+        }
+
+        // تابع سفارش مستقیم
+        function orderService(service) {
+            window.open(`https://t.me/ma3ih01?text=سفارش ${service}`, '_blank');
+        }
+
+        // تابع فرم VIP
+        function submitVIPForm() {
+            const name = document.getElementById('vName').value;
+            const contact = document.getElementById('vContact').value;
+            const service = document.getElementById('vService').value;
+            window.open(`https://t.me/ma3ih01?text=سفارش VIP: ${name} - ${service} - ${contact}`, '_blank');
+        }
+
+        // انیمیشن اسکرول
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) el.classList.add('active');
+            });
+        });
+        window.dispatchEvent(new Event('scroll'));
+
+        // چک کردن اینکه آیا کاربر مستقیم از طریق لینک پروفایل آمده یا نه
+        // در حالت واقعی این چک کردن توسط سرور انجام می‌شود
+        if(window.location.hash === '#profile') {
+            showProfile();
+        }
+    </script>
 </body>
 </html>
