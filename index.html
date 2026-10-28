@@ -108,9 +108,25 @@ footer{border-top:1px solid #a66bff35;background:linear-gradient(180deg,#080817,
 .product-modal.open{display:flex}.product-dialog{width:min(620px,100%);max-height:92vh;overflow:auto;padding:22px;border:1px solid #a66bff88;border-radius:20px;background:linear-gradient(145deg,#17132b,#090914);box-shadow:0 0 40px #a66bff22}
 .product-dialog h2{margin-top:0;color:var(--cyan)}.product-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.product-form-grid label{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:13px}.product-form-grid input,.product-form-grid select,.product-form-grid textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#080817;color:#fff;font:inherit}.product-form-grid .full{grid-column:1/-1}.product-modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.product-modal-actions>*{flex:1;min-width:150px;cursor:pointer;font:inherit}.product-help{font-size:12px;color:var(--muted)}@media(max-width:520px){.product-form-grid{grid-template-columns:1fr}.product-form-grid .full{grid-column:auto}.product-dialog{padding:16px}}
 
+
+/* صفحه اختصاصی و نئونی هر پروفایل */
+#soloProfile{display:none;min-height:100vh;padding:28px 16px 18px;background:radial-gradient(ellipse at 15% 10%,#7027c955,transparent 35%),radial-gradient(ellipse at 85% 25%,#00e5ff33,transparent 32%),radial-gradient(ellipse at 50% 100%,#ff2b9b22,transparent 42%),linear-gradient(145deg,#050511,#10102b 48%,#070711);color:#fff;font-family:inherit;position:relative;overflow:hidden}
+#soloProfile:before{content:"✦  ✧  ⋆  ✦  ✧  ⋆  ✦  ✧";position:absolute;inset:12px 0 auto;text-align:center;letter-spacing:16px;color:#bba6ff66;font-size:18px;pointer-events:none}
+.solo-wrap{width:min(760px,100%);margin:32px auto 0;text-align:center;position:relative;z-index:1}
+.solo-card{border:1px solid #8b65ff99;border-radius:28px;padding:28px 20px;background:linear-gradient(145deg,#17162de8,#080816f2);box-shadow:0 0 22px #7a39ff22,0 0 70px #00e5ff12;backdrop-filter:blur(16px)}
+.solo-avatar{width:124px;height:124px;object-fit:cover;border-radius:50%;margin:4px auto 16px;border:3px solid #54f5ff;box-shadow:0 0 0 7px #54f5ff13,0 0 34px #54f5ff55;display:grid;place-items:center;background:linear-gradient(135deg,#6b35d5,#00bcd4);font-size:50px;font-weight:900}
+.solo-tag{display:inline-block;border:1px solid #53f6d488;background:#53f6d411;color:#8dffe4;padding:7px 13px;border-radius:999px;font-size:12px;margin:6px 0 12px}
+.solo-name{font-size:clamp(27px,6vw,42px);margin:8px 0;color:#fff;text-shadow:0 0 24px #9d73ff88;overflow-wrap:anywhere}
+.solo-username{color:#72efff;font-size:15px;overflow-wrap:anywhere}.solo-bio{color:#dedcf6;line-height:2;white-space:pre-wrap;overflow-wrap:anywhere;margin:20px auto;max-width:580px}
+.solo-link,.solo-copy{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin:7px;padding:12px 18px;border-radius:14px;text-decoration:none;font:inherit;font-weight:800;cursor:pointer;color:white;border:1px solid #ffffff26;background:linear-gradient(100deg,#6334c9,#b52a87)}
+.solo-copy{background:linear-gradient(100deg,#087f9b,#4d37ba)}.solo-code{color:#b9b5d8;font-size:12px;margin-top:20px;overflow-wrap:anywhere}.solo-success{font-size:clamp(18px,4vw,25px);font-weight:900;color:#80ffd9;text-shadow:0 0 20px #00ffc366;margin:20px 0 8px}.solo-credit{margin:24px auto 0;color:#bdb8dc;font-size:12px;line-height:2}.solo-credit strong{color:#fff}.solo-error{color:#ffb4cb;padding:35px 10px;line-height:2}
+body.profile-view{background:#050511!important}body.profile-view>#soloProfile{display:block}body.profile-view>.topline,body.profile-view>header,body.profile-view>nav,body.profile-view>main,body.profile-view>footer{display:none!important}
+@media(max-width:480px){#soloProfile{padding:22px 12px}.solo-card{padding:24px 15px;border-radius:22px}.solo-avatar{width:108px;height:108px}}
+
 </style>
 </head>
 <body>
+<section id="soloProfile" aria-live="polite"><div class="solo-wrap"><div class="solo-card" id="soloProfileContent"><div class="solo-tag">✨ MASIH HACKRING · پروفایل اختصاصی</div><h1 class="solo-name">در حال بارگذاری پروفایل…</h1></div><div class="solo-credit">برنامه‌نویس و طراح: <strong>مسیح هکرینگ | Masih Hackring</strong><br>ساخته‌شده با ✨ برای معرفی بهتر شما</div></div></section>
 <div class="topline"></div>
 <header id="top"><div class="brand">MASIH HACKRING</div><div class="brand-sub">DIGITAL SERVICES</div>
 <p class="hero-description">فروشگاه خدمات دیجیتال؛ از طراحی سایت و برنامه‌نویسی تا خدمات تلگرام و گرافیک. خدمت موردنظرت را انتخاب کن و سفارش را مستقیم هماهنگ کن.</p>
@@ -295,7 +311,7 @@ footer{border-top:1px solid #a66bff35;background:linear-gradient(180deg,#080817,
 <section id="rules"><div class="panel"><h2 class="section-heading">📋 قوانین و شرایط سفارش</h2><ul class="legal-list"><li>پیش از شروع، شرح پروژه، هزینه و زمان تحویل باید مشخص و تأیید شوند.</li><li>ارسال پیام به معنی پذیرش سفارش یا تضمین تحویل نیست.</li><li>اطلاعات حساس حساب‌ها، گذرواژه‌ها و کدهای ورود را در پیام ارسال نکن.</li><li>مشتری باید حق استفاده از فایل‌ها، تصاویر و محتوای ارسالی را داشته باشد.</li><li>تغییر محدودهٔ پروژه ممکن است نیازمند هماهنگی دوباره باشد.</li></ul><h3>حریم خصوصی</h3><p class="muted">این نسخه فرم ثبت اطلاعات، پایگاه دادهٔ مشتریان یا سیستم پرداخت ندارد. گفت‌وگوی سفارش از طریق تلگرام انجام می‌شود و تابع تنظیمات و سیاست‌های همان سرویس است.</p></div></section>
 <section id="search-info"><div class="panel"><h2 class="section-heading">🔍 ابزارهای بررسی سایت</h2><p class="muted">از سرچ کنسول برای بررسی وضعیت خزش و ایندکس استفاده کن. ایندکس‌شدن تضمین نمی‌شود.</p><div class="hero-actions"><a class="btn" href="https://search.google.com/search-console/" target="_blank" rel="noopener noreferrer">Google Search Console</a><a class="btn" href="https://www.google.com/search?q=site%3Aneon-portfolio-7vhj.onrender.com" target="_blank" rel="noopener noreferrer">بررسی نتایج گوگل</a></div></div></section>
 </main>
-<footer><div class="brand">MASIH HACKRING</div><p>فروشگاه خدمات دیجیتال و برنامه‌نویسی</p><p><a href="#top">خانه</a> · <a href="#services">خدمات</a> · <a href="#contact">تماس با ما</a> · <a href="#rules">قوانین</a></p><p>© Masih Hackring — تمامی حقوق محفوظ است.</p><a href="#top">↑ بازگشت به بالای صفحه</a></footer>
+<footer><div class="brand">MASIH HACKRING</div><p>فروشگاه خدمات دیجیتال و برنامه‌نویسی</p><p><a href="#top">خانه</a> · <a href="#services">خدمات</a> · <a href="#contact">تماس با ما</a> · <a href="#rules">قوانین</a></p><p>© Masih Hackring — تمامی حقوق محفوظ است.</p><p>برنامه‌نویس و طراح سایت: <strong>مسیح هکرینگ | Masih Hackring</strong> ✨</p><a href="#top">↑ بازگشت به بالای صفحه</a></footer>
 <script>
 "use strict";
 const searchInput=document.getElementById("search");
@@ -395,8 +411,8 @@ async function loadPublicProfiles() {
       if (row.bio) { const p = document.createElement("p"); p.textContent = row.bio; card.appendChild(p); }
       if (row.social_url) { const a = document.createElement("a"); a.href = row.social_url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "مشاهده لینک"; card.appendChild(a); }
       const code = document.createElement("small"); code.textContent = "کد پروفایل: " + row.tracking_code; card.appendChild(code);
-      const share = document.createElement("button"); share.type = "button"; share.className = "btn"; share.textContent = "کپی لینک این صفحه";
-      share.addEventListener("click", async () => { try { await navigator.clipboard.writeText(location.href.split("#")[0] + "#identity-profile"); share.textContent = "لینک کپی شد ✓"; } catch (_) { share.textContent = "آدرس صفحه را از نوار مرورگر کپی کن"; } });
+      const share = document.createElement("button"); share.type = "button"; share.className = "btn"; share.textContent = "🔗 کپی لینک اختصاصی پروفایل";
+      share.addEventListener("click", async () => { try { await navigator.clipboard.writeText(new URL("?profile=" + encodeURIComponent(row.tracking_code), location.href.split("?")[0]).href); share.textContent = "لینک کپی شد ✓"; } catch (_) { share.textContent = "آدرس صفحه را از نوار مرورگر کپی کن"; } });
       card.appendChild(share); target.appendChild(card);
     });
   } catch (_) {
@@ -427,15 +443,43 @@ identityForm.addEventListener("submit", async event => {
     if (!response.ok) { const details = await response.text(); throw new Error("profile save " + response.status + ": " + details); }
     const saved = (await response.json())[0];
     document.getElementById("profilePublicCode").textContent = "کد پروفایل عمومی: " + saved.tracking_code;
-    identityResult.textContent = "پروفایلت بلافاصله ثبت و عمومی شد! کد پروفایل: " + saved.tracking_code;
-    updateIdentityPreview(); await loadPublicProfiles();
-    identityForm.reset(); selectedPhotoDataUrl = "";
-    const image = document.getElementById("identityPhotoPreview"); image.hidden = true;
+    identityResult.textContent = "✅ پروفایلت ثبت شد! صفحه اختصاصی‌ات در حال باز شدن است…";
+    const ownProfileUrl = new URL(location.pathname, location.origin);
+    ownProfileUrl.searchParams.set("profile", saved.tracking_code);
+    location.href = ownProfileUrl.href; return;
   } catch (error) {
     console.error("Identity profile registration failed", error);
     identityResult.textContent = "ثبت انجام نشد: " + (error && error.message ? error.message : "خطای ناشناخته") + " — متن این خطا را برای پشتیبانی بفرست."; identityResult.scrollIntoView({behavior:"smooth",block:"center"});
   } finally { button.disabled = false; }
 });
+async function renderSoloProfile() {
+  const code = new URLSearchParams(location.search).get("profile");
+  if (!code) return;
+  document.body.classList.add("profile-view");
+  const root = document.getElementById("soloProfileContent");
+  root.innerHTML = '<div class="solo-tag">✨ MASIH HACKRING · پروفایل اختصاصی</div><p>در حال دریافت اطلاعات…</p>';
+  try {
+    const safeCode = code.replace(/[^A-Za-z0-9_-]/g, "");
+    if (!safeCode || safeCode !== code) throw new Error("کد پروفایل نامعتبر است");
+    const query = "?select=tracking_code,display_name,username,bio,social_url,avatar_url,created_at&tracking_code=eq." + encodeURIComponent(safeCode) + "&limit=1";
+    const response = await fetch(SUPABASE_URL + "/rest/v1/" + PROFILE_TABLE + query, {headers:supabaseHeaders()});
+    if (!response.ok) throw new Error("خطا در دریافت پروفایل (" + response.status + ")");
+    const rows = await response.json();
+    if (!rows.length) throw new Error("این پروفایل پیدا نشد یا هنوز ثبت نشده است.");
+    const row = rows[0]; root.replaceChildren();
+    const tag=document.createElement("div"); tag.className="solo-tag"; tag.textContent="💎 هویت دیجیتال · MASIH HACKRING"; root.appendChild(tag);
+    if(row.avatar_url){const img=document.createElement("img");img.className="solo-avatar";img.src=row.avatar_url;img.alt="تصویر پروفایل "+row.display_name;root.appendChild(img)}else{const avatar=document.createElement("div");avatar.className="solo-avatar";avatar.textContent=Array.from(row.display_name||"؟")[0];avatar.setAttribute("aria-label","نماد پروفایل");root.appendChild(avatar)}
+    const name=document.createElement("h1");name.className="solo-name";name.textContent=row.display_name;root.appendChild(name);
+    if(row.username){const user=document.createElement("p");user.className="solo-username";user.textContent="👤 @"+row.username.replace(/^@/,"");root.appendChild(user)}
+    const bio=document.createElement("p");bio.className="solo-bio";bio.textContent=row.bio||"این کاربر هنوز توضیحی برای پروفایلش ننوشته است.";root.appendChild(bio);
+    if(row.social_url){const a=document.createElement("a");a.className="solo-link";a.href=row.social_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="🔗 مشاهده شبکه اجتماعی";root.appendChild(a)}
+    const success=document.createElement("div");success.className="solo-success";success.textContent="✅ اصالت‌سنجی با موفقیت انجام شد";root.appendChild(success);
+    const note=document.createElement("p");note.className="identity-note";note.textContent="این صفحه بر اساس اطلاعاتی نمایش داده می‌شود که صاحب پروفایل ثبت کرده است.";root.appendChild(note);
+    const copy=document.createElement("button");copy.type="button";copy.className="solo-copy";copy.textContent="📋 کپی لینک اختصاصی من";copy.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(location.href);copy.textContent="✅ لینک کپی شد"}catch(_){copy.textContent="آدرس را از نوار مرورگر کپی کن"}});root.appendChild(copy);
+    const tracking=document.createElement("div");tracking.className="solo-code";tracking.textContent="کد شناسایی پروفایل: "+row.tracking_code;root.appendChild(tracking);
+  } catch(error) {root.innerHTML="";const err=document.createElement("div");err.className="solo-error";err.textContent="⚠️ "+(error.message||"بارگذاری پروفایل ناموفق بود")+". اتصال اینترنت و وضعیت پایگاه داده را بررسی کنید.";root.appendChild(err)}
+}
+renderSoloProfile();
 loadPublicProfiles();
 
 // انتخاب‌گر سفارش: نام‌های روشن و متن قابل کپی حتی در صورت باز نشدن تلگرام.
