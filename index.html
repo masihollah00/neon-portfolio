@@ -280,7 +280,7 @@ footer{border-top:1px solid #a66bff35;background:linear-gradient(180deg,#080817,
 <div class="identity-field full"><label for="identityPhoto">عکس پروفایل خودت</label><input id="identityPhoto" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="identityPhotoHelp"><small id="identityPhotoHelp" class="identity-note">تصویر PNG، JPG یا WebP تا ۲ مگابایت؛ پس از تنظیم فضای ذخیره‌سازی همراه پروفایل منتشر می‌شود.</small></div>
 <div class="identity-field full"><label for="identityBio">بیوگرافی کوتاه</label><textarea id="identityBio" rows="3" maxlength="350" placeholder="چند خط درباره خودت..."></textarea></div>
 <div class="identity-field"><label for="identityLink">لینک تلگرام یا شبکه اجتماعی</label><input id="identityLink" maxlength="200" placeholder="https://t.me/username یا @username"></div>
-<div class="identity-field full"><label><input id="identityConsent" type="checkbox" required> با انتشار عمومی نام، آیدی، بیو، لینک و عکس انتخابی‌ام موافقم.</label></div>
+<div class="identity-field full"><label><input id="identityConsent" type="checkbox"> با انتشار عمومی نام، آیدی، بیو، لینک و عکس انتخابی‌ام موافقم.</label></div>
 </div>
 <div class="identity-actions"><button type="button" class="btn btn-primary" id="previewIdentity">پیش‌نمایش</button><button type="submit" class="btn">ثبت و انتشار پروفایل</button></div>
 </form>
@@ -311,7 +311,7 @@ console.assert(cards.length===80,"Expected exactly 80 static service cards");
 // اتصال مستقیم به Supabase: ثبت فوری پروفایل عمومی و نمایش عکس
 const SUPABASE_URL = "https://pughgsqtrnjzlzppwclp.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_oaDTQeYiV5X81UtnFoD8tw_4kh4PGar";
-const PROFILE_BUCKET = "profile-photos";
+const PROFILE_BUCKET = "identity-avatars";
 const PROFILE_TABLE = "identity_profiles";
 const identityForm = document.getElementById("identityForm");
 const identityResult = document.getElementById("identityResult");
@@ -321,7 +321,7 @@ const identityValue = id => document.getElementById(id)?.value.trim() || "";
 let selectedPhotoDataUrl = "";
 
 function supabaseHeaders(extra = {}) {
-  return { apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY, ...extra };
+  return { apikey: SUPABASE_ANON_KEY, ...extra };
 }
 function safeProfileLink(raw) {
   if (!raw) return null;
@@ -407,7 +407,7 @@ identityForm.addEventListener("submit", async event => {
   event.preventDefault();
   if (!identityForm.reportValidity()) return;
   if (!document.getElementById("identityConsent").checked) {
-    identityResult.textContent = "برای انتشار عمومی باید رضایت خودت را تأیید کنی."; return;
+    identityResult.textContent = "برای ثبت پروفایل، تیک رضایت انتشار عمومی را بزن."; identityResult.scrollIntoView({behavior:"smooth",block:"center"}); return;
   }
   const name = identityValue("identityName");
   const username = identityValue("identityUsername").replace(/^@/, "");
@@ -433,7 +433,7 @@ identityForm.addEventListener("submit", async event => {
     const image = document.getElementById("identityPhotoPreview"); image.hidden = true;
   } catch (error) {
     console.error("Identity profile registration failed", error);
-    identityResult.textContent = "ثبت انجام نشد. SQL، کلید عمومی، جدول identity_profiles و مخزن عکس profile-photos را بررسی کن؛ اطلاعاتت منتشر نشده است.";
+    identityResult.textContent = "ثبت انجام نشد: " + (error && error.message ? error.message : "خطای ناشناخته") + " — متن این خطا را برای پشتیبانی بفرست."; identityResult.scrollIntoView({behavior:"smooth",block:"center"});
   } finally { button.disabled = false; }
 });
 loadPublicProfiles();
