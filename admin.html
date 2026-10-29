@@ -2,312 +2,154 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<title>پنل مدیریت | SIFLA</title>
-<style>
-:root{color-scheme:dark;--bg:#080817;--panel:#14142b;--cyan:#00f5ff;--pink:#ff35d3;--text:#f5f5ff;--muted:#bcbcd5}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#201747,transparent 60%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
-main{width:min(900px,94%);margin:35px auto}
-.card{background:#111126;border:1px solid #00f5ff55;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 0 25px #00f5ff0c}
-h1,h2{color:var(--cyan)}
-input,textarea,select,button{font:inherit;border-radius:10px;padding:10px;width:100%;margin:6px 0}
-input,textarea,select{background:#080817;color:white;border:1px solid #595979}
-button{background:linear-gradient(100deg,#00c9ff,#9c42ff);color:white;border:0;font-weight:bold;cursor:pointer}
-button.secondary{background:#292943}
-button.danger{background:#a92354}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.small{color:var(--muted);font-size:13px}
-.hidden{display:none!important}
-.service{border:1px solid #ffffff20;border-radius:12px;padding:14px;margin:12px 0}
-.status{padding:10px;border-radius:8px;background:#20203a;white-space:pre-wrap}
-label{display:block;margin-top:10px}
-@media(max-width:560px){.row{grid-template-columns:1fr}main{margin:15px auto}.card{padding:15px}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>پنل مدیریت | Masih Hackring</title>
+  <style>
+    body{font-family:Tahoma,Arial;background:#101018;color:#fff;margin:0;padding:20px}
+    main{max-width:850px;margin:auto}
+    section,.service{background:#1d1d2b;padding:18px;border-radius:14px;margin:14px 0}
+    input,button{box-sizing:border-box;padding:12px;border-radius:8px;border:1px solid #555;margin:5px 0}
+    input{background:#111;color:white;width:100%}
+    button{background:#ff35d3;color:#111;font-weight:bold;cursor:pointer}
+    .service{display:grid;grid-template-columns:1fr 130px 100px;gap:10px;align-items:center}
+    #status{white-space:pre-wrap;color:#ffd166}
+    @media(max-width:600px){.service{grid-template-columns:1fr}.service button{width:100%}}
+  </style>
 </head>
 <body>
 <main>
-  <h1>⚡ پنل مدیریت SIFLA</h1>
-  <p class="small">مدیریت خدمات فروشگاه Masih Hackring</p>
+  <h1>پنل مدیریت سیفلا</h1>
+  <p>Masih Hackring</p>
 
-  <section class="card" id="loginBox">
+  <section id="login">
     <h2>ورود مدیر</h2>
-    <label for="password">رمز مدیریت</label>
-    <input id="password" type="password" autocomplete="current-password" placeholder="رمز مدیریت را وارد کن">
-    <button id="loginBtn">ورود به پنل</button>
+    <input id="email" type="email" placeholder="ایمیل حساب مدیر">
+    <input id="password" type="password" placeholder="رمز عبور" autocomplete="current-password">
+    <button id="loginBtn">ورود</button>
   </section>
 
-  <section id="dashboard" class="hidden">
-    <div class="card">
-      <h2>خدمات سایت</h2>
-      <p class="small">عنوان، توضیحات، قیمت و وضعیت خدمات را تغییر بده و ذخیره کن.</p>
-      <div id="services"></div>
-      <button id="addBtn" class="secondary">＋ افزودن خدمت</button>
-      <button id="saveBtn">ذخیره تغییرات روی سرور</button>
-      <button id="logoutBtn" class="secondary">خروج از پنل</button>
-    </div>
-    <div class="card">
-      <h2>مدیریت هویت‌ها</h2>
-      <p class="small">این بخش به تنظیمات جدول هویت‌ها در Supabase نیاز دارد.</p>
-      <button id="loadIdentities" class="secondary">نمایش هویت‌ها</button>
-      <div id="identities"></div>
-    </div>
+  <section id="panel" hidden>
+    <button id="logoutBtn">خروج</button>
+    <h2>مدیریت قیمت خدمات</h2>
+    <div id="services">در حال بارگذاری...</div>
   </section>
-  <div id="status" class="status" role="status">آماده</div>
+  <p id="status" role="status"></p>
 </main>
-<script>
-'use strict';
 
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+// این دو مقدار را از Project Settings > API در Supabase بگیر.
+const SUPABASE_URL = 'https://pughgsqtrnjzlzppwclp.supabase.co';
+const SUPABASE_PUBLIC_KEY = 'کلید_عمومی_یا_publishable_خودت';
+
+const db = createClient(SUPABASE_URL, SUPABASE_PUBLIC_KEY);
 const $ = id => document.getElementById(id);
-let csrfToken = '';
-let services = [];
+const status = message => $('status').textContent = message;
 
-function message(text) {
-  $('status').textContent = text;
-}
-
-async function api(url, options = {}) {
-  const headers = { ...(options.headers || {}) };
-  if (options.body) headers['Content-Type'] = 'application/json';
-  if (csrfToken && !['GET', 'HEAD'].includes((options.method || 'GET').toUpperCase())) {
-    headers['X-CSRF-Token'] = csrfToken;
+async function loadServices(){
+  const {data: userResult} = await db.auth.getUser();
+  if(!userResult.user){
+    $('login').hidden = false;
+    $('panel').hidden = true;
+    return;
   }
-  const response = await fetch(url, {
-    credentials: 'same-origin',
-    ...options,
-    headers
-  });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(data.error || `خطا (${response.status})`);
-  return data;
-}
 
-function showDashboard() {
-  $('loginBox').classList.add('hidden');
-  $('dashboard').classList.remove('hidden');
-}
+  const {data: admin, error: adminError} = await db
+    .from('site_admins').select('user_id')
+    .eq('user_id', userResult.user.id).maybeSingle();
 
-function showLogin() {
-  $('loginBox').classList.remove('hidden');
-  $('dashboard').classList.add('hidden');
-}
+  if(adminError || !admin){
+    status('این حساب مجوز مدیر ندارد.');
+    await db.auth.signOut();
+    return;
+  }
 
-function renderServices() {
-  const root = $('services');
-  root.replaceChildren();
+  $('login').hidden = true;
+  $('panel').hidden = false;
 
-  services.forEach((service, index) => {
+  const {data, error} = await db.from('store_services')
+    .select('id,service_key,title,price_toman,is_active')
+    .order('id');
+
+  if(error){status('خطای بارگذاری: ' + error.message);return;}
+
+  $('services').replaceChildren();
+  for(const item of data || []){
     const card = document.createElement('div');
     card.className = 'service';
 
-    const titleLabel = document.createElement('label');
-    titleLabel.textContent = 'عنوان خدمت';
-    const title = document.createElement('input');
-    title.maxLength = 140;
-    title.value = service.title || '';
-    title.addEventListener('input', () => service.title = title.value);
+    const title = document.createElement('strong');
+    title.textContent = item.title || item.service_key;
 
-    const descLabel = document.createElement('label');
-    descLabel.textContent = 'توضیحات';
-    const desc = document.createElement('textarea');
-    desc.maxLength = 1200;
-    desc.rows = 3;
-    desc.value = service.description || '';
-    desc.addEventListener('input', () => service.description = desc.value);
-
-    const priceLabel = document.createElement('label');
-    priceLabel.textContent = 'قیمت (تومان)';
     const price = document.createElement('input');
-    price.maxLength = 100;
-    price.value = service.price || 'توافقی';
-    price.addEventListener('input', () => service.price = price.value);
+    price.type = 'number';
+    price.min = '0';
+    price.placeholder = 'قیمت تومان';
+    price.value = item.price_toman ?? '';
+    price.setAttribute('aria-label','قیمت '+(item.title || item.service_key));
 
-    const categoryLabel = document.createElement('label');
-    categoryLabel.textContent = 'دسته‌بندی';
-    const category = document.createElement('input');
-    category.maxLength = 80;
-    category.value = service.category || 'خدمات تکمیلی';
-    category.addEventListener('input', () => service.category = category.value);
-
-    const activeLabel = document.createElement('label');
     const active = document.createElement('input');
     active.type = 'checkbox';
-    active.style.width = 'auto';
-    active.checked = service.active !== false;
-    active.addEventListener('change', () => service.active = active.checked);
-    activeLabel.append(active, document.createTextNode(' نمایش خدمت در سایت'));
+    active.checked = item.is_active;
+    active.setAttribute('aria-label','فعال بودن خدمت');
 
-    const remove = document.createElement('button');
-    remove.type = 'button';
-    remove.className = 'danger';
-    remove.textContent = 'حذف از فهرست تنظیمات';
-    remove.addEventListener('click', () => {
-      if (confirm('این خدمت از فهرست تنظیمات حذف شود؟')) {
-        services.splice(index, 1);
-        renderServices();
+    const save = document.createElement('button');
+    save.textContent = 'ذخیره';
+
+    save.addEventListener('click', async () => {
+      const raw = price.value.trim();
+      const amount = raw === '' ? null : Number(raw);
+      if(raw !== '' && (!Number.isSafeInteger(amount) || amount < 0)){
+        status('قیمت باید یک عدد صحیح و غیرمنفی باشد.');
+        return;
       }
+
+      save.disabled = true;
+      const {error: updateError} = await db.from('store_services')
+        .update({
+          price_toman: amount,
+          is_active: active.checked,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', item.id);
+
+      save.disabled = false;
+      status(updateError
+        ? 'ذخیره ناموفق: ' + updateError.message
+        : 'تغییرات ذخیره شد. برای نمایش در سایت اصلی، اتصال index.html هم باید تنظیم شود.');
     });
 
-    card.append(titleLabel, title, descLabel, desc, priceLabel, price,
-      categoryLabel, category, activeLabel, remove);
-    root.append(card);
-  });
-}
-
-async function refreshSession() {
-  try {
-    const data = await api('/api/admin/me');
-    if (data.authenticated) {
-      csrfToken = data.csrfToken || '';
-      showDashboard();
-      await loadSettings();
-    }
-  } catch (_) {}
-}
-
-async function loadSettings() {
-  const data = await api('/api/admin/settings');
-  services = Array.isArray(data.settings?.services)
-    ? data.settings.services.map(item => ({ ...item }))
-    : [];
-  renderServices();
-  message(`تنظیمات دریافت شد؛ ${services.length} خدمت در فایل تنظیمات سرور وجود دارد.`);
+    card.append(title, price, active, save);
+    $('services').append(card);
+  }
+  status('خدمات بارگذاری شدند.');
 }
 
 $('loginBtn').addEventListener('click', async () => {
-  try {
-    const password = $('password').value;
-    const data = await api('/api/admin/login', {
-      method: 'POST',
-      body: JSON.stringify({ password })
-    });
-    csrfToken = data.csrfToken || '';
-    $('password').value = '';
-    showDashboard();
-    await loadSettings();
-    message('ورود موفق بود.');
-  } catch (err) {
-    message(err.message);
-  }
-});
-
-$('password').addEventListener('keydown', event => {
-  if (event.key === 'Enter') $('loginBtn').click();
-});
-
-$('addBtn').addEventListener('click', () => {
-  services.push({
-    title: '',
-    description: '',
-    price: 'توافقی',
-    category: 'خدمات تکمیلی',
-    active: true
+  status('در حال ورود...');
+  const {error} = await db.auth.signInWithPassword({
+    email: $('email').value.trim(),
+    password: $('password').value
   });
-  renderServices();
-});
-
-$('saveBtn').addEventListener('click', async () => {
-  try {
-    const data = await api('/api/admin/settings', {
-      method: 'PUT',
-      body: JSON.stringify({ services })
-    });
-    services = data.settings.services;
-    renderServices();
-    message('تنظیمات در سرور ذخیره شد.');
-  } catch (err) {
-    message('ذخیره انجام نشد: ' + err.message);
-  }
+  if(error){status('ورود ناموفق: '+error.message);return;}
+  await loadServices();
 });
 
 $('logoutBtn').addEventListener('click', async () => {
-  try {
-    await api('/api/admin/logout', { method: 'POST' });
-    csrfToken = '';
-    services = [];
-    showLogin();
-    message('از پنل خارج شدی.');
-  } catch (err) {
-    message(err.message);
-  }
+  await db.auth.signOut();
+  $('login').hidden = false;
+  $('panel').hidden = true;
+  status('خارج شدی.');
 });
 
-$('loadIdentities').addEventListener('click', async () => {
-  try {
-    const data = await api('/api/admin/identities');
-    const root = $('identities');
-    root.replaceChildren();
-
-    if (!data.identities.length) {
-      root.textContent = 'هویتی پیدا نشد.';
-      return;
-    }
-
-    data.identities.forEach(identity => {
-      const card = document.createElement('div');
-      card.className = 'service';
-
-      const heading = document.createElement('strong');
-      heading.textContent = identity.display_name || identity.tracking_code || 'بدون نام';
-      card.append(heading);
-
-      const details = document.createElement('p');
-      details.textContent = `کد: ${identity.tracking_code || '—'} | نام کاربری: ${identity.username || '—'}`;
-      card.append(details);
-
-      const edit = document.createElement('button');
-      edit.textContent = 'ویرایش اطلاعات';
-      edit.addEventListener('click', async () => {
-        const name = prompt('نام نمایشی:', identity.display_name || '');
-        if (name === null) return;
-        const username = prompt('نام کاربری:', identity.username || '');
-        if (username === null) return;
-        const bio = prompt('توضیحات:', identity.bio || '');
-        if (bio === null) return;
-        const social_url = prompt('لینک HTTPS یا آیدی تلگرام:', identity.social_url || '');
-        if (social_url === null) return;
-
-        try {
-          await api('/api/admin/identities/' + encodeURIComponent(identity.tracking_code), {
-            method: 'PATCH',
-            body: JSON.stringify({ display_name: name, username, bio, social_url })
-          });
-          message('هویت ویرایش شد.');
-          $('loadIdentities').click();
-        } catch (err) {
-          message(err.message);
-        }
-      });
-
-      const remove = document.createElement('button');
-      remove.className = 'danger';
-      remove.textContent = 'حذف هویت';
-      remove.addEventListener('click', async () => {
-        if (!confirm('هویت انتخاب‌شده حذف شود؟ این کار قابل بازگشت نیست.')) return;
-        try {
-          await api('/api/admin/identities/' + encodeURIComponent(identity.tracking_code), {
-            method: 'DELETE'
-          });
-          message('هویت حذف شد.');
-          $('loadIdentities').click();
-        } catch (err) {
-          message(err.message);
-        }
-      });
-
-      card.append(edit, remove);
-      root.append(card);
-    });
-
-    message(`تعداد ${data.identities.length} هویت دریافت شد.`);
-  } catch (err) {
-    message(err.message);
-  }
-});
-
-refreshSession();
+if(SUPABASE_PUBLIC_KEY.startsWith('کلید_')){
+  status('ابتدا کلید عمومی Supabase را در کد وارد کن.');
+}else{
+  await loadServices();
+  db.auth.onAuthStateChange(() => loadServices());
+}
 </script>
 </body>
 </html>
